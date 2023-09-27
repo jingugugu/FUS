@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration status="WARN">
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT">
+            // %d = 로그 시간에 관한 설정 괄호 안의 형태로 포맷 가능
+            // %p는 로그 레벨, %c는 로그가 발생한 클래스 경로, %m은 로그 메시지, %n은 개행이다.
+            // %5p는 로그 레벨이 출력되는 기본 문자열 길이를 5로 설정한다는 의미이다.
+            // %c, %logger : 해당 로그를 쓰는 로거의 이름.
+            // %m, %msg, %message : 로그문에 전달된 메시지
+            <patternLayout pattern="%d{HH:mm:ss.SSS} %5p [%t] %-5level %logger{36} - %msg%n"/> // 출력 형태 설정  시간. 레벨. 로그메세지.
+        </console>
+    </appenders>
+    <loggers>
+        <root level="info">
+            <appenderRef ref="Console"/> // 콘솔로 설정. (파일로 로그 찍을수도 있음)
+        </root>
+    </loggers>
+</configuration>

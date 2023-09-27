@@ -1,0 +1,71 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    junitVersion = '5.9.2'
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    compileOnly('javax.servlet:javax.servlet-api:4.0.1')
+
+
+    // https://mvnrepository.com/artifact/javax.servlet/jstl        // jstl 태그 라이브러리
+    implementation 'javax.servlet:jstl:1.2'
+
+
+    // https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client  // mariaDB
+    implementation 'org.mariadb.jdbc:mariadb-java-client:3.1.4'
+
+
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok        // 롬북
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    testCompileOnly 'org.projectlombok:lombok:1.18.22'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // https://mvnrepository.com/artifact/com.zaxxer/HikariCP        // 히카리CP
+    implementation 'com.zaxxer:HikariCP:5.0.1'  // DB 커넥션 풀. 기존에는 사용할 때 마다 연결하고 해제하고 많은 시간과 저장공간을 사용했는데
+    // hikariCP를 사용하면 커넥션을 보관하고 있다가 쓰고 다시 넣어놓고 느낌이라 시간과 메모리 절약에 좋음
+    // 이용하기 위해서는 HikariConfig 타입의 객체를 생성해주어야 함. HikariConfig란 connection pool을 설정하는데 필요한 정보들을 가지고 있음
+
+    // https://mvnrepository.com/artifact/org.modelmapper/modelmapper     // ModelMapper
+    implementation 'org.modelmapper:modelmapper:3.0.0'                    // ModelMapper는 getter / setter 등을 이용해서 객체의 정보를 다음 객체로 복사하는 기능을 제공.
+    // ModelMapper를 이용할 때 대상 클래스의 생성자를 이용할 수 있도록 생성자 관련 어노테이션을 추가.
+
+
+    implementation 'org.apache.logging.log4j:log4j-core:2.17.2'         // Log4j2
+    implementation 'org.apache.logging.log4j:log4j-api:2.17.2'          // System.out.prinln() 대체 라이브러리
+    implementation 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.2'   // Appender(메세지를 콘솔 or 파일로 출력 설정), Level (메세지 중요도 설정) 기능 있음
+
+//    // https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils   // beanUtils
+    implementation 'commons-beanutils:commons-beanutils:1.9.3'
+//
+//    // rest 관련
+//    // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client  // Rest
+//    implementation 'org.glassfish.jersey.containers:jersey-container-servlet:2.40'
+//    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.40'
+//    implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:2.40'
+
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+}
+
+test {
+    useJUnitPlatform()
+}
