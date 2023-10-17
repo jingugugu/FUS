@@ -27,12 +27,13 @@ public class BoardDAOTests {
     public void testInsetBoard() throws Exception{
         for(int i = 1; i <= 30; i++){
             BoardDTO boardDTO = BoardDTO.builder()
-                    .title("FUS Project..." + i)
+                    .title("FUS Project...")
+                    .memberId("testman")
                     .name("user00" + i)
-                    .content("이번 축구 경기는..." + i)
-                    .fileName("soccer.jsp" +i)
+                    .content("이번 축구 경기는...")
+                    .fileName("soccer.jsp")
                     .build();
-            boardDAO.insertBoard(boardDTO);
+            boardDAO.boardAdd(boardDTO);
         }
     }
 
@@ -65,4 +66,9 @@ public class BoardDAOTests {
         list.forEach(boardDTO -> System.out.println(boardDTO));
     }
 
+    @Test
+    public void testAddBoard() throws Exception{
+        BoardDTO boardDTO = BoardDTO.builder()
+                .title("").build();
+    }
 }

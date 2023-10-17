@@ -18,7 +18,7 @@ public enum MapperUtil {
                 .setMatchingStrategy(MatchingStrategies.STRICT);        // STRICT : 엄격모드. 이름과 데이터 타입 모두 확인. ( 대소문자 까지 확인 )
     }
 
-    public  ModelMapper getInstance() {
+    public ModelMapper getInstance() {
         return modelMapper;
     }
 

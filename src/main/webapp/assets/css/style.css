@@ -38,7 +38,21 @@ body {
     width:100%;
     font-family: 'Raleway', sans-serif;
 }
-
+a {
+    text-decoration: none !important;
+}
+@font-face {
+    font-family: 'omyu_pretty';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-01@1.0/omyu_pretty.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GangwonEduPowerExtraBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 /*------------------------------------------------------------------*/
 /*   IE10 in Windows 8 and Windows Phone 8 Bug fix
 /*-----------------------------------------------------------------*/
@@ -53,7 +67,7 @@ body {
     Page Content
 ------------------------------------------*/
 
-.page-content, 
+.page-content,
 section { overflow: hidden; }
 
 /*
@@ -221,7 +235,8 @@ h4,
 h5,
 h6 {
     margin: 0;
-    font-family: 'Raleway', sans-serif;
+    /*font-family: 'Raleway', sans-serif;*/
+    font-family: 'omyu_pretty';
     color:#1a1a1a;
     margin-bottom: 10px;
 }
@@ -321,12 +336,9 @@ ul{
     width: 100%;
     height:100%;
     position: absolute;
+    top:0;
     left:0;
-    top: 0;
 }
-
-
-
 
 .no-padding {
     padding: 0 !important;
@@ -369,18 +381,6 @@ Button
     border:1px solid;
     padding: 1rem 4rem;
 }
-.btn-primary{
-    color: #333;
-    background-color: #fff;
-    border:1px solid;
-    border-color: #fff;
-
-}
-.btn-primary:hover{
-    background-color: #eee;
-    border-color: #eee;
-    color:#00a885;
-}
 
 .btn-default{
     color: #7b8895;
@@ -394,7 +394,9 @@ Button
     border-color: #fddc57;
 }
 
-
+.btn-success { /* 주의 요망 삭제 해야할 수 있음 */
+    width: 150px;
+}
 
 
 
@@ -424,7 +426,7 @@ Extra height css
     margin-right: 15px;
 }
 .m-l-15{
-    margin-left: 15px; 
+    margin-left: 15px;
 }
 .m-top-10 {
     margin-top: 10px;
@@ -693,9 +695,9 @@ textarea::-ms-input-placeholder{
 }*/
 
 
-.transform_scal_rotate:hover img{ 
-    -webkit-transform: scale(1.1) rotate(4deg); 
-    transform: scale(1.1) rotate(4deg); 
+.transform_scal_rotate:hover img{
+    -webkit-transform: scale(1.1) rotate(4deg);
+    transform: scale(1.1) rotate(4deg);
 }
 
 .culmn{
@@ -755,9 +757,9 @@ textarea::-ms-input-placeholder{
     width: 50px;
     margin-top: -25px;
     margin-left: -25px;
-    -ms-transform: rotate(45deg); 
+    -ms-transform: rotate(45deg);
     -webkit-transform: rotate(45deg);
-    transform: rotate(45deg); 
+    transform: rotate(45deg);
     -webkit-animation: loading-center-absolute 1.5s infinite;
     animation: loading-center-absolute 1.5s infinite;
 
@@ -795,7 +797,7 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes loading-center-absolute {
-    100% { 
+    100% {
         transform:  rotate(-45deg);
         -webkit-transform:  rotate(-45deg);
     }
@@ -810,11 +812,11 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_one {
-    25% { 
+    25% {
         transform: translate(0,-50px) rotate(-180deg);
         -webkit-transform: translate(0,-50px) rotate(-180deg);
-    } 
-    100% { 
+    }
+    100% {
         transform: translate(0,0) rotate(-180deg);
         -webkit-transform: translate(0,0) rotate(-180deg);
     }
@@ -827,11 +829,11 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_two {
-    25% { 
+    25% {
         transform: translate(50px,0) rotate(-180deg);
         -webkit-transform: translate(50px,0) rotate(-180deg);
-    } 
-    100% { 
+    }
+    100% {
         transform: translate(0,0) rotate(-180deg);
         -webkit-transform: translate(0,0) rotate(-180deg);
     }
@@ -843,11 +845,11 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_three {
-    25% { 
+    25% {
         transform:  translate(-50px,0) rotate(-180deg);
         -webkit-transform:  translate(-50px,0) rotate(-180deg);
-    } 
-    100% { 
+    }
+    100% {
         transform: translate(0,0) rotate(-180deg);
         -webkit-transform: rtranslate(0,0) rotate(-180deg);
     }
@@ -860,11 +862,11 @@ textarea::-ms-input-placeholder{
 }
 
 @keyframes object_four {
-    25% { 
-        transform: translate(0,50px) rotate(-180deg); 
-        -webkit-transform: translate(0,50px) rotate(-180deg);  
-    } 
-    100% { 
+    25% {
+        transform: translate(0,50px) rotate(-180deg);
+        -webkit-transform: translate(0,50px) rotate(-180deg);
+    }
+    100% {
         transform: translate(0,0) rotate(-180deg);
         -webkit-transform: translate(0,0) rotate(-180deg);
     }
@@ -877,7 +879,7 @@ Nav Menu style
 ==================*/
 
 .navbar-brand {
-    padding: 30px 15px;
+    padding: 20px 15px;
 }
 nav.navbar.bootsnav ul.nav li.active > a{
     color:#fddc57;
@@ -887,6 +889,12 @@ nav.navbar.bootsnav.no-background.white ul.nav > li > a {
 }
 nav.navbar.bootsnav.no-background.white ul.nav > li.active > a {
     color: #fddc57;
+}
+nav.navbar.bootsnav ul.nav > li > a:hover {
+    color: #0ec9a2;
+}
+nav.navbar.bootsnav.no-background.white ul.nav > li > a:hover, nav.navbar.bootsnav.no-background.white ul.nav > li:active > a:hover {
+    color: #0ec9a2;
 }
 
 /*
@@ -917,7 +925,7 @@ Home Section style
 
 
 /*scrooldown
--------------------*/ 
+-------------------*/
 
 @-webkit-keyframes scroll-ani {
     0% {
@@ -1146,6 +1154,7 @@ Featured section style
 }
 
 
+
 /*
 tems Section style
 =====================*/
@@ -1250,14 +1259,14 @@ tems Section style
     outline:none;
 }
 
-.main-portfolio .btn:focus, 
-.main-portfolio .btn:active:focus, 
-.main-portfolio .btn.active:focus, 
-.main-portfolio .btn.focus, 
-.main-portfolio .btn:active.focus, 
+.main-portfolio .btn:focus,
+.main-portfolio .btn:active:focus,
+.main-portfolio .btn.active:focus,
+.main-portfolio .btn.focus,
+.main-portfolio .btn:active.focus,
 .main-portfolio .btn.active.focus{
-    outline: 0; 
-    outline-offset:0; 
+    outline: 0;
+    outline-offset:0;
 }
 
 .main-portfolio .button:hover {
@@ -1396,7 +1405,7 @@ tems Section style
 }
 .test_item1 .item_img i{
     background-color: #fff;
-    color: #ddd; 
+    color: #ddd;
 }
 
 
@@ -1472,6 +1481,81 @@ tems Section style
 .widget_newsletter .form-inline .form-group{
     display: block;
 }
+
+.form-group {
+    width: 40%;
+}
+
+.form-inline {
+    width: 24% !important;
+    margin: 0 !important;
+}
+
+.flex-row-end-column-center {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.flex-row-betweeen {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#regFrm, #editFrm, #frmEditProduct, #frmAddProduct {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.flex-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-label > span {
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+}
+
+.zipCode {
+    width: 25% !important;
+}
+
+.btnFindZipcode {
+    margin-left: 5px;
+    width: 25% !important;
+    text-align: center !important;
+    height: 40px;
+    padding: 0;
+    line-height: 40px;
+}
+
+
+.form-input {
+    width: 60%;
+    height: 50px;
+    border-radius: 0.2em;
+    border:1px solid #ccc;
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+}
+
+.form-input:focus {
+    border-color: #bcefeb;
+    outline: 0;
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075),0 0 0px rgba(102,175,233,.6);
+}
+
+.form-div {
+    width: 80%;
+}
+
 .widget_newsletter .form-control{
     width:80%;
     height: 40px;
@@ -1479,6 +1563,7 @@ tems Section style
     border-color:#333333;
     display: inline-block;
 }
+
 .widget_newsletter .btn{
     width: 18%;
     padding: 0.65rem 1.2rem;
@@ -1512,4 +1597,455 @@ tems Section style
 
 .margin-block {
     margin-top: 100px;
+}
+
+.user-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(164, 126, 126, 0.4);
+    width: 20%;
+    height: 200px;
+    margin-left: 100px;
+}
+
+.user-board, .user-review, .user-ripple {
+    width: 40vw;
+    height: 100%;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.user-container table {
+    display: flex;
+    width: 100%;
+}
+
+.user-container th, .user-container td {
+    width: 150px;
+    padding: 8px 5px;
+}
+
+.user-container .content {
+    width: 50%;
+}
+
+.user-contents-category {
+    text-align: center;
+}
+
+.contents-category:first-child {
+    margin-left: 12vw;
+}
+
+.contents-category {
+    border: none;
+    background: black;
+    color: white;
+    margin: 0 10px;
+    border-radius: 0.4em;
+}
+
+.contents-category:hover {
+    background: white;
+    color: black;
+}
+
+.main-container .container{
+    display: flex;
+    justify-content: center;
+}
+
+.main-container .container form {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.main-container .btn-wrap {
+    display: flex;
+    justify-content: right;
+    width: 60%;
+}
+
+.main-container a {
+    color: black;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    font-weight: bold;
+}
+
+.block-btn-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.block-btn-wrap a {
+    line-height: 12px;
+    padding: 0 10px;
+    color: #8a9dd9;
+}
+
+.product-list-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.product-list-nav > ul {
+    display: flex;
+}
+
+.flex-test {
+    display: flex;
+    justify-content: start;
+    width: 1140px;
+    flex-wrap: wrap;
+}
+
+.wrapper2 {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-list-wrap {
+    /*margin: 5px 10px;*/
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    color: black;
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cart > h3 {
+    color: rgb(128, 128, 128);
+}
+
+.continue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.one {
+    font-weight: bold;
+    font-size: large;
+    color: #d43f3a;
+}
+
+.btn-removeById {
+    background-color: rgb(128, 128, 128);
+}
+
+.cart-table {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: 1000px;
+}
+
+
+
+.products-title {
+    margin-top: 20px;
+    padding: 30px 0 10px 0;
+    text-align: center;
+    font-family: 'GangwonEduPowerExtraBoldA';
+    font-size: 40px;
+}
+
+.product-img-scale-wrap {
+    overflow: hidden;
+}
+
+.products-category-container {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    align-items: end;
+}
+
+.league-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+
+}
+.league-container > a {
+    color: black;
+}
+
+.products-category {
+    margin: 0 10px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.products-category:hover {
+    transform: scale(1.1);
+    color: #4545ce;
+}
+
+.league > img {
+    width: 20px;
+    height: 20px;
+}
+
+.category-container {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.btn-modify, .btn-remove {
+    width: 80px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 1em;
+    font-size: 14px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.btn-modify {
+    background-color: #6280dc;
+    color: white;
+}
+
+.btn-remove {
+    background-color: #dc6262;
+    color: white;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+}
+
+#submitBtn {
+    margin-top: 40px;
+    width: 100%;
+}
+
+.img-scale-wrap {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.img-scale-wrap  > img {
+    display: block;
+    width: 100%;
+}
+
+.magnifier {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 3px 3px rgba(0, 0, 0, 0.25);
+    display: none;
+}
+
+
+.product-info-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+    text-align: left;
+}
+.product-info-wrap div{
+    display: flex;
+}
+.product-info-wrap span {
+    width: 100px;
+    font-weight: bold;
+}
+.product-info-wrap p {
+    width: 400px;
+}
+.product-info-wrap input[type=number] {
+    width: 50px;
+}
+.white-btn, .purple-btn {
+    width: 200px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 0.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+.white-btn {
+    border: 2px solid white;
+    background-color: #6060dc;
+    color: white;
+}
+.purple-btn, .purple-a {
+    border: 2px solid #6060dc;
+    background-color: transparent;
+    color: #6060dc;
+}
+.red-btn {
+    border: 2px solid red;
+    border-radius: 0.3em;
+    padding: 5px 10px;
+}
+
+.purple-a {
+    padding: 3px 10px;
+    border-radius: 0.4em;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.board-flex-row {
+    display: flex;
+    justify-content: space-around;
+}
+
+.board-num, .board-count {
+    width: 7%;
+    text-align: center;
+}
+
+.board-date {
+    width: 16%;
+    text-align: center;
+}
+
+.board-title {
+    width: 70%;
+    text-align: center;
+}
+.board-container {
+    width: 1000px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.user-ripple-list {
+    border-top: 1px solid rgba(224, 224, 224, 0.53);
+    padding-top: 20px;
+    margin-top: 20px;
+    width: 60vw;
+}
+
+.removeRippleBtn {
+    text-align: right;
+}
+
+.list-group-item {
+    display: flex;
+}
+
+.ripple-date {
+    width: 31%;
+    padding-left: 10%;
+}
+.ripple-content {
+    width: 50%;
+}
+.ripple-name {
+    width: 15%;
+}
+
+.removeRippleBtn {
+    /*cursor: pointer;*/
+    width: 4%;
+}
+
+.ripple-content-box {
+    position: relative;
+}
+.ripple-submit-btn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: #6060dc;
+    color: white;
+    padding: 6px 40px;
+    border-radius: 0.1em;
+    font-size: 14px;
+}
+
+.write-ripple-area {
+    padding: 3px;
+    display: flex;
+    width: 60vw;
+    border: 2px solid black;
+}
+
+form[name=frmRipple] {
+    width: 60vw;
+}
+
+.ripple-form-name {
+    width: 20%;
+    text-align: center;
+}
+.ripple-content-box {
+    width: 100%;
+}
+.ripple-form-content {
+    width: 100%;
+    padding: 10px;
+}
+
+.navbar-brand > img {
+    margin-bottom: 20px;
+    width: 128px;
+    height: 40px;
+}
+.product-img {
+    height: 100px;
+    width: 100px;
+}
+.product-name {
+    font-size: 20px;
+}
+.product-description {
+    color: #bdbdbd;
+}
+.product-price {
+    font-size: 20px;
+}
+
+.product-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 240px;
+    height: 240px;
+}
+
+/*   오더페이지 구역   */
+.shipping-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.product-order-wrap {
+
 }

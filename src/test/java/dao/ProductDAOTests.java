@@ -18,22 +18,36 @@ public class ProductDAOTests {
     //product 추가 (완)
     @Test
     public void insertTest() throws Exception{
-        ProductDTO productDTO = ProductDTO.builder()
-                .productId(125)
-                .productName("123")
-                .category("123")
-                .description("123")
-                .price(123)
-                .unitsInStock(123)
-                .fileName("https://imgnews.pstatic.net/image/005/2023/09/26/2023092613594878000_1695704388_0018709360_20230926164406785.jpg?type=w647")
-                .build();
-        productDAO.insertProduct(productDTO);
+        for (int i = 181; i < 211; i++) {
+            ProductDTO productDTO = ProductDTO.builder()
+                    .productId(i)
+                    .productName("유니폼" + i)
+                    .category("NAT")
+                    .description("123")
+                    .price(29000)
+                    .unitsInStock(20)
+                    .fileName("test3.jpg")
+                    .build();
+            productDAO.insertProduct(productDTO);
+        }
+    }
+
+    // 카테고리별 전체 출력 (완)
+    @Test
+    public void testCategoryProductList() throws Exception{
+        List<ProductDTO> list = productDAO.getCategoryProducts("1", "EPL");
+        //1)람다와 스트림 이요해서 출력.
+        list.forEach(product -> System.out.println(product));
+        //2)foreach사용
+        for(ProductDTO productDTO : list) {
+            System.out.println(productDTO);
+        }
     }
 
     //전체 출력 (완)
     @Test
     public void testAddList() throws Exception{
-        List<ProductDTO> list = productDAO.selectAll();
+        List<ProductDTO> list = productDAO.selectAll("1");
         //1)람다와 스트림 이요해서 출력.
         list.forEach(product -> System.out.println(product));
         //2)foreach사용
@@ -44,7 +58,7 @@ public class ProductDAOTests {
 
     @Test
     public void testGetProduct() throws Exception{
-        String productId = "123";
+        Integer productId = 123;
         ProductDTO productDTO = productDAO.selectProduct(productId);
         log.info(productDTO);
 

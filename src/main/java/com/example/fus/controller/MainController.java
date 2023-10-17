@@ -1,14 +1,15 @@
 package com.example.fus.controller;
 
+import com.example.fus.dto.ProductDTO;
+import com.example.fus.service.ProductService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.util.List;
 
 @Log4j2
 @WebServlet("/main")
@@ -16,8 +17,14 @@ import java.io.IOException;
 public class MainController extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
         try {
+            ProductService productService = new ProductService();
+            List<ProductDTO> productList = productService.listProductLimit8();
+            for (ProductDTO products : productList){
+                log.info(products);
+            }
+            req.setAttribute("productList", productList);
             req.getRequestDispatcher("/WEB-INF/main/main.jsp").forward(req, resp);
         } catch (Exception e) {
             log.error(e.getMessage());

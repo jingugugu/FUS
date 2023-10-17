@@ -1,15 +1,15 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
-  <link rel="icon" type="image/png" href="favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/images/favicon.ico?ver1">
 
   <!--Google Font link-->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
 
   <link rel="stylesheet" href="/assets/css/slick.css">
   <link rel="stylesheet" href="/assets/css/slick-theme.css">
@@ -21,12 +21,11 @@
   <link rel="stylesheet" href="/assets/css/bootsnav.css">
 
 
-
   <!--For Plugins external css-->
-  <link rel="stylesheet" href="/assets/css/plugins.css?v" />
+  <link rel="stylesheet" href="/assets/css/plugins.css?a" />
 
   <!--Theme custom css -->
-  <link rel="stylesheet" href="/assets/css/style.css?a">
+  <link rel="stylesheet" href="/assets/css/style.css?bb154323">
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="/assets/css/responsive.css" />
@@ -56,8 +55,8 @@
     <div class="top-search">
       <div class="container">
         <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-search"></i></span>
-          <input type="text" class="form-control" placeholder="Search">
+          <span id="searchBtn" class="input-group-addon" style="cursor: pointer"><i class="fa fa-search"></i></span>
+          <input type="text" id="searchValue" class="form-control" placeholder="Search">
           <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
         </div>
       </div>
@@ -77,8 +76,8 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
           <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="#">
-          <img src="/assets/images/logo.png" class="logo" alt="">
+        <a class="navbar-brand" href="/main">
+          <img src="/assets/images/logo2.png" class="logo" alt="">
           <!--<img src="assets/images/footer-logo.png" class="logo logo-scrolled" alt="">-->
         </a>
 
@@ -88,27 +87,34 @@
       <!-- navbar menu -->
       <div class="collapse navbar-collapse" id="navbar-menu">
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/main">Home</a></li>
           <c:choose>
             <c:when test="${empty loginInfo}">
               <li class="nav-item"><a class="nav-link" href="/user/login">login</a></li>
             </c:when>
             <c:otherwise>
-              <li class="nav-item"><a class="nav-link" style="cursor: default; color: coral;">[${loginInfo.name}님]</a></li>
+              <li class="nav-item"><a class="nav-link" style="cursor: default; color: coral !important;">[${loginInfo.name} 님]</a></li>
               <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
               <li class="nav-item"><a class="nav-link" href="/user/myPage">MyPage</a></li>
-              <li class="nav-item"><a class="nav-link" href="/cart/지정하세용">Cart</a></li>
+              <li class="nav-item"><a class="nav-link" href="/cart/list">Cart</a></li>
             </c:otherwise>
           </c:choose>
-          <li class="nav-item"><a class="nav-link" href="/product/list">Shop</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Review</a></li>
-          <li class="nav-item"><a class="nav-link" href="/board/all">Board</a></li>
+          <li class="nav-item"><a class="nav-link" href="/product/list?pageNum=1&category=ALL">Shop</a></li>
+          <li class="nav-item"><a class="nav-link" href="/board/all?pageNum=1">Board</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div>
   </nav>
-  <div class="margin-block"></div>
+
 </div>
+<script>
+  const searchBtn = document.getElementById("searchBtn");
+  const searchValue = document.getElementById("searchValue");
+
+  searchBtn.addEventListener("click", function (){
+    location.href = "/product/search?pageNum=1&word="+searchValue.value;
+  })
+</script>
 </body>
 <script src="/assets/js/vendor/jquery-1.11.2.min.js"></script>
 <script src="/assets/js/vendor/bootstrap.min.js"></script>
@@ -124,6 +130,6 @@
 
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
-<script src="/assets/js/plugins.js?"></script>
-<script src="/assets/js/main.js?"></script>
+<script src="/assets/js/plugins.js?a"></script>
+<script src="/assets/js/main.js?a"></script>
 </html>

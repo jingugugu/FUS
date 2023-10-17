@@ -2,6 +2,7 @@ package com.example.fus.controller;
 
 import com.example.fus.dto.BoardDTO;
 import com.example.fus.service.BoardService;
+import com.example.fus.service.CartService;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/board/*")
-@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="c:/upload/board" )
+@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="c:/upload/fus/board" )
 public class BoardController extends HttpServlet {
     private BoardService boardService = null;
     private String path = null;
@@ -34,15 +35,17 @@ public class BoardController extends HttpServlet {
 
         switch (path) {
             case "/all":
-                List<BoardDTO> boardDTOList = boardService.listBoardDTO();
+                String pageNum = "1";
+                if(req.getParameter("pageNum") != null) {
+                    pageNum = req.getParameter("pageNum");
+                }
+                String count = boardService.sizeBoards();
+                List<BoardDTO> boardDTOList = boardService.listBoardDTO(pageNum);
                 req.setAttribute("boardDTOList", boardDTOList);
+                req.setAttribute("pageNum", pageNum);
+                req.setAttribute("count", count);
                 req.getRequestDispatcher("/WEB-INF/board/boardList.jsp").forward(req, resp);
                 break;
-
-            case "/view":
-                BoardDTO boardDTO = boardService.getBoard(req);
-                req.setAttribute("boardDTO", boardDTO);
-                req.getRequestDispatcher("/WEB-INF/board/boardView.jsp").forward(req, resp);
 
             case "/add":
                 req.getRequestDispatcher("/WEB-INF/board/boardAdd.jsp").forward(req, resp);
@@ -50,7 +53,19 @@ public class BoardController extends HttpServlet {
 
             case "/remove":
                 boardService.removeBoard(req);
-//                resp.sendRedirect("list.board?action=list");
+                resp.sendRedirect("/board/all");
+                break;
+
+            case "/view":
+                boardService.boardCountUp(req);
+                BoardDTO boardDTO = boardService.getBoard(req);
+                log.info("확인" + boardDTO.getMemberId());
+                req.setAttribute("boardDTO", boardDTO);
+                req.getRequestDispatcher("/WEB-INF/board/boardView.jsp").forward(req, resp);
+                break;
+            case "/modify":
+                boardService.getBoard(req);
+                req.getRequestDispatcher("/WEB-INF/board/boardModify.jsp").forward(req, resp);
                 break;
         }
     }
@@ -65,29 +80,30 @@ public class BoardController extends HttpServlet {
         if (path == null) {
             path = "/all";
         }
-
         switch (path) {
-            case "/all":
-                List<BoardDTO> boardDTOList = boardService.listBoardDTO();
-                req.setAttribute("boardDTOList", boardDTOList);
-                req.getRequestDispatcher("/WEB-INF/board/boardList.jsp").forward(req, resp);
-                break;
-
             case "/add":
-                boardService.addBoard(req); // 여기서 보드 만드는 메소드 쓰고 // 리스트로 sendRedirect 하면 됨
-                resp.sendRedirect("list.board?action=list");
+                boardService.boardAdd(req);
+                resp.sendRedirect("/board/all");
                 break;
 
-            case "remove":
+            case "/remove":
                 boardService.removeBoard(req);
-                resp.sendRedirect("list.board?action=list");
+                resp.sendRedirect("/board/all");
                 break;
-
-            case "view":
+            case "/view":
                 boardService.getBoard(req);
                 req.getRequestDispatcher("/WEB-INF/board/boardView.jsp").forward(req, resp);
+                break;
 
-
+            case "/modify":
+                BoardDTO editBoardDTO = boardService.getBoard(req);
+                req.setAttribute("editBoardDTO", editBoardDTO);
+                req.getRequestDispatcher("/WEB-INF/board/boardModify.jsp").forward(req, resp);
+                break;
+            case "/modify.do":
+                boardService.modifyBoard(req);
+                resp.sendRedirect("/board/all");
+                break;
         }
 
 

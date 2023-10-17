@@ -55,7 +55,12 @@ dependencies {
 
 //    // https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils   // beanUtils
     implementation 'commons-beanutils:commons-beanutils:1.9.3'
-//
+
+    //json관련
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+
+
 //    // rest 관련
 //    // https://mvnrepository.com/artifact/org.glassfish.jersey.core/jersey-client  // Rest
 //    implementation 'org.glassfish.jersey.containers:jersey-container-servlet:2.40'

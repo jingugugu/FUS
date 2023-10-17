@@ -11,6 +11,18 @@
         </console>
     </appenders>
     <loggers>
+        <logger name="org.springframework" level="INFO" additivity="false" >
+            <appender-ref ref="Console" />
+        </logger>
+
+        <logger name="com.example" level="INFO" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
+
+        <logger name="com.example.sample.mapper" level="TRACE" additivity="false">
+            <appender-ref ref="Console" />
+        </logger>
+
         <root level="info">
             <appenderRef ref="Console"/> // 콘솔로 설정. (파일로 로그 찍을수도 있음)
         </root>
