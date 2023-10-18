@@ -59,7 +59,7 @@ public class ProductDAO {
     public void insertProduct(ProductDTO product) throws Exception{
 
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
-        String sql = "insert into product values (?,?,?,?,?,?,?,now())";
+        String sql = "insert into product values (?,?,?,?,?,?,?,now(),?,?)";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
         preparedStatement.setInt(1, product.getProductId());
@@ -69,19 +69,23 @@ public class ProductDAO {
         preparedStatement.setInt(5, product.getPrice());
         preparedStatement.setInt(6, product.getUnitsInStock());
         preparedStatement.setString(7, product.getFileName());
+        preparedStatement.setInt(8, 0);
+        preparedStatement.setInt(9, 0);
         log.info(preparedStatement.executeUpdate());
     }
 
     // 전체 출력 ( 페이징 )
-    public List<ProductDTO> selectAll(String pageNum) throws Exception{
+    public List<ProductDTO> selectAll(String pageNum, String orderby) throws Exception{
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<ProductDTO> list = new ArrayList<>();
+        log.info("orderby =============" + orderby);
         int pageNumValue = Integer.parseInt(pageNum);
         int limit = 8;
         int start = (pageNumValue * 8) - 8; // 0 8 16 24
 
-        String sql = "select * from product order by `addDate` desc LIMIT "+start+", "+limit;
+        String sql = "select * from product order by " + orderby + " desc LIMIT "+start+", "+limit;
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        log.info("sql~ ================" + sql);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()){
@@ -94,6 +98,8 @@ public class ProductDAO {
                     .unitsInStock(resultSet.getInt("unitsInStock"))
                     .fileName(resultSet.getString("fileName"))
                     .addDate(String.valueOf(resultSet.getDate("addDate").toLocalDate()))
+                    .reviewCount(resultSet.getInt("reviewCount"))
+                    .orderCount(resultSet.getInt("orderCount"))
                     .build();
             list.add(product);
         }
@@ -101,7 +107,7 @@ public class ProductDAO {
     }
 
     // 카테고리별 전체 출력 ( 페이징 )
-    public List<ProductDTO> getCategoryProducts(String pageNum, String category) throws Exception{
+    public List<ProductDTO> getCategoryProducts(String pageNum, String category, String orderby) throws Exception{
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<ProductDTO> list = new ArrayList<>();
         int pageNumValue = Integer.parseInt(pageNum);
@@ -110,9 +116,9 @@ public class ProductDAO {
         int start = (pageNumValue * limit) - limit; // 0 12 24 36 48
         String sql = null;
         if(category.equals("ALL")){
-            sql = "select * from product order by `addDate` desc  LIMIT "+start+", "+limit;
+            sql = "select * from product order by " + orderby + " desc  LIMIT "+start+", "+limit;
         } else {
-            sql = "select * from product WHERE category = ? order by `addDate` desc  LIMIT " + start + ", " + limit;
+            sql = "select * from product WHERE category = ? order by " + orderby + " desc  LIMIT " + start + ", " + limit;
         }
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, category);
@@ -128,6 +134,8 @@ public class ProductDAO {
                     .unitsInStock(resultSet.getInt("unitsInStock"))
                     .fileName(resultSet.getString("fileName"))
                     .addDate(String.valueOf(resultSet.getDate("addDate").toLocalDate()))
+                    .reviewCount(resultSet.getInt("reviewCount"))
+                    .orderCount(resultSet.getInt("orderCount"))
                     .build();
             list.add(product);
         }
@@ -157,6 +165,8 @@ public class ProductDAO {
                     .unitsInStock(resultSet.getInt("unitsInStock"))
                     .fileName(resultSet.getString("fileName"))
                     .addDate(String.valueOf(resultSet.getDate("addDate").toLocalDate()))
+                    .reviewCount(resultSet.getInt("reviewCount"))
+                    .orderCount(resultSet.getInt("orderCount"))
                     .build();
             list.add(product);
         }
@@ -184,6 +194,8 @@ public class ProductDAO {
                     .unitsInStock(resultSet.getInt("unitsInStock"))
                     .fileName(resultSet.getString("fileName"))
                     .addDate(String.valueOf(resultSet.getDate("addDate").toLocalDate()))
+                    .reviewCount(resultSet.getInt("reviewCount"))
+                    .orderCount(resultSet.getInt("orderCount"))
                     .build();
         }
         return product;
@@ -235,10 +247,20 @@ public class ProductDAO {
                     .unitsInStock(resultSet.getInt("unitsInStock"))
                     .fileName(resultSet.getString("fileName"))
                     .addDate(String.valueOf(resultSet.getDate("addDate").toLocalDate()))
+                    .reviewCount(resultSet.getInt("reviewCount"))
+                    .orderCount(resultSet.getInt("orderCount"))
                     .build();
             list.add(product);
         }
         return list;
     }
+    // 리뷰 등록 시 리뷰 수 올리는 메소드
+    public Integer reviewCountUp(int productId) throws SQLException{
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        String sql = "UPDATE product SET reviewCount = reviewCount + 1 WHERE productId = ?";
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, productId);
 
+        return preparedStatement.executeUpdate();
+    }
 }

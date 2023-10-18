@@ -12,8 +12,6 @@ public class ProductServiceTests {
     @Test
     public void Test(){
         try {
-
-
             ProductService productService = new ProductService();
             ProductDAO productDAO = new ProductDAO();
 //        log.info(productService.sizeCategoryProductList("ALL"));
@@ -32,5 +30,11 @@ public class ProductServiceTests {
         }
 
     }
-
+    //리뷰 등록시 리뷰수 추가
+    @Test
+    public void reviewCountTest(){
+        int productId = 1;
+        ProductService productService = new ProductService();
+        productService.reviewCountUp(productId);
+    }
 }

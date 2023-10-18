@@ -7,6 +7,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import java.sql.SQLException;
 import java.util.List;
 
 @Log4j2
@@ -86,11 +87,11 @@ public class ProductService {
     }
     
     // 상품 목록 전체 가져오기
-    public List<ProductDTO> listProduct(String pageNum) {
+    public List<ProductDTO> listProduct(String pageNum, String orderby) {
         /*ProductList.jsp에서 상품 목록을 보여주기 위한 요청을 처리하는 메서드 */
         List<ProductDTO> productDTOList = null;
         try{
-            productDTOList = productDAO.selectAll(pageNum);
+            productDTOList = productDAO.selectAll(pageNum, orderby);
         } catch (Exception e) {
             log.info(e.getMessage());
             log.info("Product List error");
@@ -99,11 +100,11 @@ public class ProductService {
     }
 
     // 카테고리별 상품 목록 전체 가져오기
-    public List<ProductDTO> categoryProducts(String pageNum, String category) {
+    public List<ProductDTO> categoryProducts(String pageNum, String category, String orderby) {
         /*ProductList.jsp에서 상품 목록을 보여주기 위한 요청을 처리하는 메서드 */
         List<ProductDTO> productDTOList = null;
         try{
-            productDTOList = productDAO.getCategoryProducts(pageNum, category);
+            productDTOList = productDAO.getCategoryProducts(pageNum, category, orderby);
         } catch (Exception e) {
             log.info(e.getMessage());
             log.info("Product List error");
@@ -180,5 +181,14 @@ public class ProductService {
             log.info("Product List error");
         }
         return productDTOList;
+    }
+
+    // 조회수 업데이트 메소드
+    public void reviewCountUp(int productId) {
+        try {
+            productDAO.reviewCountUp(productId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
