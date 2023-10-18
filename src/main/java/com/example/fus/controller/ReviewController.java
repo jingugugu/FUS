@@ -1,5 +1,6 @@
 package com.example.fus.controller;
 
+import com.example.fus.service.ProductService;
 import com.example.fus.service.ReviewService;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,6 +18,7 @@ import java.io.IOException;
 public class ReviewController extends HttpServlet {
     private String path;
     private ReviewService reviewService = null;
+    ProductService productService = null;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,6 +27,7 @@ public class ReviewController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         reviewService = new ReviewService();
+        productService = new ProductService();
         path = req.getPathInfo();
 
         if(path == null){
@@ -34,6 +37,7 @@ public class ReviewController extends HttpServlet {
             case "/add":
                 int productId = Integer.parseInt(req.getParameter("productId"));
                 reviewService.addReview(req);
+                productService.reviewCountUp(productId);
                 resp.sendRedirect("/product/view?productId=" + productId);
         }
     }

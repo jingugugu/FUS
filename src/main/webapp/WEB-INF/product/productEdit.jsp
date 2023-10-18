@@ -103,17 +103,17 @@
 
     <h3 class="products-title">Just Dropped</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="newProduct" items="${newProducts}">
             <div class="product-list-wrap" style="width: 250px">
                     <div class="product-img-scale-wrap">
-                        <img class="product-img" src="/upload/fus/product/${product.fileName}" style="width: 100px;">
+                        <img class="product-img" src="/upload/fus/product/${newProduct.fileName}" style="width: 100px;">
                     </div>
-                    <h3>${product.productName}</h3>
-                    <p>${product.description}</p>
-                    <p>${product.price}</p>
+                    <h3>${newProduct.productName}</h3>
+                    <p>${newProduct.description}</p>
+                    <p>${newProduct.price}</p>
                     <p>
-                        <a href="/product/modify?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
-                        <a href="/product/remove?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
+                        <a href="/product/modify?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
+                        <a href="/product/remove?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
                     </p>
             </div>
         </c:forEach>
@@ -121,17 +121,17 @@
 
     <h3 class="products-title">Hot items</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="orderProduct" items="${orderProducts}">
             <div class="product-list-wrap" style="width: 250px">
                 <div class="product-img-scale-wrap">
-                    <img class="product-img" src="/upload/fus/product/${product.fileName}" style="width: 100px;">
+                    <img class="product-img" src="/upload/fus/product/${orderProduct.fileName}" style="width: 100px;">
                 </div>
-                <h3>${product.productName}</h3>
-                <p>${product.description}</p>
-                <p>${product.price}</p>
+                <h3>${orderProduct.productName}</h3>
+                <p>${orderProduct.description}</p>
+                <p>${orderProduct.price}</p>
                 <p>
-                    <a href="/product/modify?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
-                    <a href="/product/remove?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
+                    <a href="/product/modify?productId=${orderProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
+                    <a href="/product/remove?productId=${orderProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
                 </p>
             </div>
         </c:forEach>
@@ -139,17 +139,17 @@
 
     <h3 class="products-title">Most reviews</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="reviewProduct" items="${reviewProducts}">
             <div class="product-list-wrap" style="width: 250px">
                 <div class="product-img-scale-wrap">
-                    <img class="product-img" src="/upload/fus/product/${product.fileName}" style="width: 100px;">
+                    <img class="product-img" src="/upload/fus/product/${reviewProduct.fileName}" style="width: 100px;">
                 </div>
-                <h3>${product.productName}</h3>
-                <p>${product.description}</p>
-                <p>${product.price}</p>
+                <h3>${reviewProduct.productName}</h3>
+                <p>${reviewProduct.description}</p>
+                <p>${reviewProduct.price}</p>
                 <p>
-                    <a href="/product/modify?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
-                    <a href="/product/remove?productId=${product.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
+                    <a href="/product/modify?productId=${reviewProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
+                    <a href="/product/remove?productId=${reviewProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
                 </p>
             </div>
         </c:forEach>
