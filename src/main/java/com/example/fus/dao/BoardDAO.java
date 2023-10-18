@@ -150,7 +150,7 @@ public class BoardDAO {
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<BoardDTO> boardDTOList = new ArrayList<>();
 
-        String sql = "SELECT * FROM board WHERE memberId = ?";
+        String sql = "SELECT * FROM board WHERE memberId = ? LIMIT 5";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, memberId);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();

@@ -71,7 +71,7 @@ public class RippleDAO {
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<RippleDTO> rippleDTOS = new ArrayList<>();
 
-        String sql = "SELECT * FROM ripple WHERE memberId = ?";
+        String sql = "SELECT * FROM ripple WHERE memberId = ? LIMIT 5";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, memberId);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();

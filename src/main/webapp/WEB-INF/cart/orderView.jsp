@@ -14,6 +14,7 @@
   List cartDTOList = (List) request.getAttribute("cartDTOList"); // null, 정보가 들어있거나
   UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
 %>
+<div class="margin-block"></div>
 
 <div class="jumbotron">
   <div class="container">

@@ -2,12 +2,14 @@ package com.example.fus.service;
 
 import com.example.fus.dao.ShippingDAO;
 import com.example.fus.dto.ProductDTO;
+import com.example.fus.dto.ReviewDTO;
 import com.example.fus.dto.ShippingDTO;
 import com.example.fus.dto.UserDTO;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,5 +56,18 @@ public class ShippingService {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    // 마이페이지 최근 구매내역 5개 가져오기
+    public List<ShippingDTO> selectMemberShippings5(HttpServletRequest req) {
+        List<ShippingDTO> shippingDTOList = null;
+        try {
+            UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
+            shippingDTOList = shippingDAO.selectMemberShippings5(userDTO.getMemberId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.error("ShippingService : selectMemberShippings5 에러");
+        }
+        return shippingDTOList;
     }
 }

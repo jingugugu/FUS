@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/css/plugins.css?a" />
 
   <!--Theme custom css -->
-  <link rel="stylesheet" href="/assets/css/style.css?bb154323">
+  <link rel="stylesheet" href="/assets/css/style.css?bb3">
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="/assets/css/responsive.css" />
@@ -93,7 +93,7 @@
               <li class="nav-item"><a class="nav-link" href="/user/login">login</a></li>
             </c:when>
             <c:otherwise>
-              <li class="nav-item"><a class="nav-link" style="cursor: default; color: coral !important;">[${loginInfo.name} 님]</a></li>
+              <li class="nav-item"><a class="nav-link user-name">[${loginInfo.name} 님]</a></li>
               <li class="nav-item"><a class="nav-link" href="/user/logout">Logout</a></li>
               <li class="nav-item"><a class="nav-link" href="/user/myPage">MyPage</a></li>
               <li class="nav-item"><a class="nav-link" href="/cart/list">Cart</a></li>

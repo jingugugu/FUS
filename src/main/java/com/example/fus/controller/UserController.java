@@ -1,11 +1,7 @@
 package com.example.fus.controller;
 
-import com.example.fus.dto.BoardDTO;
-import com.example.fus.dto.RippleDTO;
-import com.example.fus.dto.UserDTO;
-import com.example.fus.service.BoardService;
-import com.example.fus.service.RippleService;
-import com.example.fus.service.UserService;
+import com.example.fus.dto.*;
+import com.example.fus.service.*;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletException;
@@ -46,19 +42,18 @@ public class UserController extends HttpServlet {
                 break;
             case "/myPage" :
                 // 여기에 유저의 최근 구매내역, 리뷰, 게시글, 댓글 목록을 리퀘스트에 setAttribute 해줘야 함
+                // 게시글 5개
                 BoardService boardService = new BoardService();
-                List<BoardDTO> boards = boardService.selectMemberBoards5(req);
-                req.setAttribute("userBoards", boards);
+                req.setAttribute("userBoards", boardService.selectMemberBoards5(req));
+                // 리플 5개
                 RippleService rippleService = new RippleService();
-                List<RippleDTO> ripples = rippleService.selectMemberRipples5(req);
-                req.setAttribute("userRipples", ripples);
-                for(BoardDTO board : boards) {
-                    log.info(board);
-                }
-                for(RippleDTO ripple : ripples) {
-                    log.info(ripple);
-                }
-
+                req.setAttribute("userRipples", rippleService.selectMemberRipples5(req));
+                // 리뷰 5개
+                ReviewService reviewService = new ReviewService();
+                req.setAttribute("userReviews", reviewService.selectMemberReviews5(req));
+                // 구매내역 5개
+                ShippingService shippingService = new ShippingService();
+                req.setAttribute("userShippings", shippingService.selectMemberShippings5(req));
                 req.getRequestDispatcher("/WEB-INF/user/myPage.jsp").forward(req, resp);
                 break;
             case "/edit" :

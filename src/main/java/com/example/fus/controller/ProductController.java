@@ -35,7 +35,10 @@ public class ProductController extends HttpServlet {
         switch (path) {
             case "/list":
                 String pageNum = req.getParameter("pageNum");
-                String category = req.getParameter("category");
+                String category = "1";
+                if(req.getParameter("category") != null) {
+                    category = req.getParameter("category");
+                }
                 List<ProductDTO> productDTOList = productService.categoryProducts(pageNum, category);
                 String count = category.equals("ALL") ? productService.sizeProductList() : productService.sizeCategoryProductList(category);
                 req.setAttribute("products", productDTOList);
