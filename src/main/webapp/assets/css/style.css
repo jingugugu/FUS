@@ -1486,6 +1486,16 @@ tems Section style
     width: 40%;
 }
 
+.form-group-title1{
+    margin-bottom: auto;
+
+}
+.text-title{
+    width: 600px;
+    height: 5%;
+
+}
+
 .form-inline {
     width: 24% !important;
     margin: 0 !important;
@@ -1825,12 +1835,27 @@ tems Section style
 .btn-modify {
     background-color: #6280dc;
     color: white;
+
 }
 
 .btn-remove {
     background-color: #dc6262;
     color: white;
 }
+
+.btns-wrap{
+    display: flex;
+    justify-content: space-around;
+    width: 80vw;
+}
+.purple-btn-custom{
+    border: 2px solid #6060dc;
+    background-color: transparent;
+    color: #6060dc;
+    padding: 3px 10px;
+    border-radius: 0.5em;
+}
+
 
 .product-container {
     display: flex;
@@ -1906,6 +1931,7 @@ tems Section style
     border: 2px solid red;
     border-radius: 0.3em;
     padding: 5px 10px;
+
 }
 
 .purple-a {
@@ -1915,6 +1941,8 @@ tems Section style
     font-weight: bold;
     font-size: 15px;
 }
+
+
 
 .board-flex-row {
     display: flex;
@@ -1932,7 +1960,12 @@ tems Section style
 }
 
 .board-title {
-    width: 70%;
+    width: 55%;
+    text-align: center;
+}
+
+.board-memberId{
+    width: 15%;
     text-align: center;
 }
 .board-container {
@@ -1942,6 +1975,17 @@ tems Section style
     margin-right: auto;
     margin-left: auto;
 }
+
+.board-text{
+    display: inline-block;
+}
+
+.btn-Sub{
+   text-align: center;
+
+}
+
+
 
 .user-ripple-list {
     border-top: 1px solid rgba(224, 224, 224, 0.53);
