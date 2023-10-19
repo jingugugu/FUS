@@ -66,7 +66,7 @@
     %>
     <div class="user-review">
         <div class="review-userController">
-            <div class="review-userId"><%=memberId%></div>
+            <div class="review-userId"><%=reviewDTO.getMemberId().substring(0, 4)+"****"%></div>
             <div class="review-productName"><%=reviewDTO.getProductName()%></div>
             <div class="review-remove"><a href="/review/remove?index=<%=reviewDTO.getIndex()%>&productId=<%=reviewDTO.getProductId()%>">삭제</a></div>
         </div>
@@ -99,7 +99,7 @@
                 </div>
                 <div>
                     <!--value="<%=productDTO.getProductName()%>"-->
-                    <input type="text" name="productName" value="<%=productDTO.getProductId()%>" readonly >
+                    <input type="text" name="productName" value="<%=productDTO.getProductName()%>" readonly >
                     <select name="rate">
                         <option value="5">5</option>
                         <option value="4">4</option>
