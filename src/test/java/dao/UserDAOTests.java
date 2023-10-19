@@ -18,7 +18,7 @@ public class UserDAOTests {
     @Test
     public void testLogin() {
         UserDTO userDTO = userDAO.login("testman", "test123");
-        log.info("결과 : " + userDTO.getName());
+        log.info("결과 : " + userDTO.getUserName());
     }
 
     @Test

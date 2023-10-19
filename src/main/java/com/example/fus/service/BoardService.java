@@ -125,7 +125,7 @@ public class BoardService {
             String content = req.getParameter("content");
             boardDTO.setMemberId(userDTO.getMemberId());
             boardDTO.setTitle(title);
-            boardDTO.setName(userDTO.getName());
+            boardDTO.setName(userDTO.getUserName());
             boardDTO.setContent(content);
 
             boardDTO.setFileName(fileName);

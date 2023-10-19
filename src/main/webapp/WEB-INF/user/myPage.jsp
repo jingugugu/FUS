@@ -23,7 +23,7 @@
     <div class="user-container">
 
         <div class="user-info">
-            <p><span>이름 </span> <%=userDTO.getName()%></p>
+            <p><span>이름 </span> <%=userDTO.getUserName()%></p>
             <p><span>생성일 </span> <%=userDTO.getAddDate()%></p>
             <p>
                 <a href="/user/edit">정보수정</a>
