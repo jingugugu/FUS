@@ -30,7 +30,7 @@ public class UserService {
         UserDTO userDTO = UserDTO.builder() // 폼에서 전달된 리퀘스트를 컨트롤러를 통해 전달받아서 userDTO에 삽입
                 .memberId(request.getParameter("memberId"))
                 .passwd(request.getParameter("passwd"))
-                .name(request.getParameter("name"))
+                .userName(request.getParameter("userName"))
                 .birthDate(request.getParameter("birthDate"))
                 .zipCode(request.getParameter("zipCode"))
                 .address01(request.getParameter("address01"))
@@ -57,7 +57,7 @@ public class UserService {
         UserDTO userDTO = UserDTO.builder()
                 .memberId(request.getParameter("memberId"))
                 .passwd(request.getParameter("passwd"))
-                .name(request.getParameter("name"))
+                .userName(request.getParameter("userName"))
                 .zipCode(request.getParameter("zipCode"))
                 .address01(request.getParameter("address01"))
                 .address02(request.getParameter("address02"))

@@ -29,7 +29,7 @@ public class UserDAO {
                 userDTO = UserDTO.builder().
                         memberId(rs.getString("memberId"))
                         .passwd(rs.getString("passwd"))
-                        .name(rs.getString("name"))
+                        .userName(rs.getString("userName"))
                         .birthDate(rs.getString("birthDate"))
                         .zipCode(rs.getString("zipCode"))
                         .address01(rs.getString("address01"))
@@ -57,13 +57,13 @@ public class UserDAO {
         try {
             @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
 
-            String sql = "INSERT INTO `user` (`memberId`, `passwd`, `name`, `birthDate`, `zipCode`, `address01`," +
+            String sql = "INSERT INTO `user` (`memberId`, `passwd`, `userName`, `birthDate`, `zipCode`, `address01`," +
                     " `address02`, `phone`, `findQuestion`, `findAnswer`, `addDate`) VALUES " +
                     "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, now())";
             @Cleanup PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, userDTO.getMemberId());
             pstmt.setString(2, userDTO.getPasswd());
-            pstmt.setString(3, userDTO.getName());
+            pstmt.setString(3, userDTO.getUserName());
             pstmt.setString(4, userDTO.getBirthDate());
             pstmt.setString(5, userDTO.getZipCode());
             pstmt.setString(6, userDTO.getAddress01());
@@ -71,7 +71,6 @@ public class UserDAO {
             pstmt.setString(8, userDTO.getPhone());
             pstmt.setString(9, userDTO.getFindQuestion());
             pstmt.setString(10, userDTO.getFindAnswer());
-            log.info("UserDAO : register() 성공");
             return pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -105,11 +104,11 @@ public class UserDAO {
         try {
             @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
 
-            String sql = "UPDATE `user` SET `passwd` = ?, `name` = ?, `zipCode` = ?, `address01` = ?, `address02` = ?, " +
+            String sql = "UPDATE `user` SET `passwd` = ?, `userName` = ?, `zipCode` = ?, `address01` = ?, `address02` = ?, " +
                     "`phone` = ?, `findQuestion` = ?, `findAnswer` = ? WHERE `memberId` = ? ";
             @Cleanup PreparedStatement pstmt = connection.prepareStatement(sql);
             pstmt.setString(1, userDTO.getPasswd());
-            pstmt.setString(2, userDTO.getName());
+            pstmt.setString(2, userDTO.getUserName());
             pstmt.setString(3, userDTO.getZipCode());
             pstmt.setString(4, userDTO.getAddress01());
             pstmt.setString(5, userDTO.getAddress02());

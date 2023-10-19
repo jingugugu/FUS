@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function (){
     const memberId = document.querySelector("input[name=memberId]");
     const passwd = document.querySelector("input[name=passwd]");
     const passwdCheck = document.getElementById("passwdCheck");
-    const name = document.querySelector("input[name=name]");
+    const name = document.querySelector("input[name=userName]");
     const zipCode = document.querySelector("input[name=zipCode]");
     const findAnswer = document.querySelector("input[name=findAnswer]");
 
