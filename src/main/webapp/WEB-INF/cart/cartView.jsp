@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,14 +26,14 @@
 
   <c:when test="${empty cartDTOList}">
     <div class="cart">
-      <img src="/upload/fus/cart/cart.jpg">
+      <img src="/upload/fus/cart/cart.jpg" width="200px">
       <h3>NO ITEM IN SHOPPING CART</h3>
       <h3>------------------------------------</h3>
       <h3>장바구니가 비어 있습니다.</h3>
       <h3>선택하신 상품을 장바구니에 담아주세요.</h3>
     </div>
     <dic class="continue">
-      <a href="/product/list" class="btn btn-secondary"> &laquo; 쇼핑 하러가기</a>
+      <a href="/product/list?pageNum=1&category=ALL" class="btn btn-secondary"> &laquo; 쇼핑 하러가기</a>
     </dic>
   </c:when>
 
@@ -97,7 +98,7 @@
           </table>
           <div align="right">
             <a href="#" class="btn white-btn btn-success1">전체 주문</a>
-            <a href="#" class="btn white-btn btn-success">선택 주문</a>
+            <a href="#" class="btn white-btn btn-success2">선택 주문</a>
           </div>
       </div>
       <a href="/product/list" class="btn btn-secondary"> &laquo; 쇼핑 계속하기</a>
@@ -109,11 +110,23 @@
 </body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    const checkIds = document.querySelectorAll("input[name=checkId]");
+
     const checkRemoveBtn = document.querySelector(".btn-selected");
     checkRemoveBtn.addEventListener("click", function (){
-      if (confirm('정말 삭제 하시겠습니까?')) {
-        document.forms[0].action = "/cart/select" + "Remove";
-        document.forms[0].submit();
+      let count = 0;
+      checkIds.forEach(checkId => {
+        if (checkId.checked) {
+          count++;
+        }
+      })
+      if (count > 0) {
+        if (confirm('정말 삭제 하시겠습니까?')) {
+          document.forms[0].action = "/cart/select" + "Remove";
+          document.forms[0].submit();
+        }
+      } else {
+        alert("삭제하실 상품을 선택해주세요!!")
       }
     })
 
@@ -136,10 +149,20 @@
       }
     })
 
-    const ckeckOrderBtn = document.querySelector(".btn-success");
+    const ckeckOrderBtn = document.querySelector(".btn-success2");
     ckeckOrderBtn.addEventListener("click", function (){
-      document.forms[0].action = "/cart/select" + "Order";
-      document.forms[0].submit();
+      let count = 0;
+      checkIds.forEach(checkId => {
+        if (checkId.checked) {
+          count++;
+        }
+      })
+      if (count > 0 ) {
+        document.forms[0].action = "/cart/select" + "Order";
+        document.forms[0].submit();
+      } else {
+        alert("주문하실 상품을 선택해주세요")
+      }
     })
 
     const idInputs = document.querySelectorAll("input[name=checkId]");

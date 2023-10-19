@@ -851,7 +851,7 @@ textarea::-ms-input-placeholder{
     }
     100% {
         transform: translate(0,0) rotate(-180deg);
-        -webkit-transform: translate(0,0) rotate(-180deg);
+        -webkit-transform: rtranslate(0,0) rotate(-180deg);
     }
 }
 
@@ -1486,6 +1486,16 @@ tems Section style
     width: 40%;
 }
 
+.form-group-title1{
+    margin-bottom: auto;
+
+}
+.text-title{
+    width: 600px;
+    height: 5%;
+
+}
+
 .form-inline {
     width: 24% !important;
     margin: 0 !important;
@@ -1616,12 +1626,8 @@ tems Section style
     margin-left: 100px;
 }
 
-.user-contents tbody {
-    width: 100%;
-}
-
-.user-shipping, .user-board, .user-review, .user-ripple {
-    width: 100%;
+.user-board, .user-review, .user-ripple {
+    width: 40vw;
     height: 100%;
 }
 
@@ -1634,7 +1640,7 @@ tems Section style
     width: 100%;
 }
 
-.user-container th, .user-container td{
+.user-container th, .user-container td {
     width: 150px;
     padding: 8px 5px;
 }
@@ -1658,12 +1664,12 @@ tems Section style
 }
 
 .contents-category:first-child {
-    margin-left: 19vw;
+    margin-left: 12vw;
 }
 
 .contents-category {
     border: none;
-    background: #3b6cd7;
+    background: black;
     color: white;
     margin: 0 10px;
     padding: 3px 15px;
@@ -1852,12 +1858,29 @@ tems Section style
 .btn-modify {
     background-color: #6280dc;
     color: white;
+
 }
 
 .btn-remove {
     background-color: #dc6262;
     color: white;
 }
+
+.btns-wrap{
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+}
+
+.purple-btn-custom{
+    border: 2px solid #6060dc;
+    background-color: transparent;
+    color: #6060dc;
+    padding: 2px 13px;
+    font-size: 14px;
+    border-radius: 0.5em;
+}
+
 
 .product-container {
     display: flex;
@@ -1963,7 +1986,7 @@ tems Section style
     text-align: center;
 }
 
-.board-memberId {
+.board-memberId{
     width: 15%;
     text-align: center;
 }
@@ -1974,6 +1997,17 @@ tems Section style
     margin-right: auto;
     margin-left: auto;
 }
+
+.board-text{
+    display: inline-block;
+}
+
+.btn-Sub{
+   text-align: center;
+
+}
+
+
 
 .user-ripple-list {
     border-top: 1px solid rgba(224, 224, 224, 0.53);
@@ -2083,17 +2117,24 @@ form[name=frmRipple] {
     align-items: center;
 }
 /*리뷰 */
-.user-review{
+
+.user-review {
     height: 250px;
     background-color: #4cae4c;
     color: black;
     border: solid 1px black;
     margin-bottom: 40px;
 }
+
 .review-userId {
     background-color: yellow;
     border: solid 1px black;
 }
+
+.white-btn:hover {
+    color: white !important;
+}
+
 .mypage-category-table {
     overflow: hidden;
     height: 390px;
@@ -2108,25 +2149,69 @@ form[name=frmRipple] {
     font-weight: bold;
     color: #6060dc;
 }
+
+.purple-btn:hover {
+    color: #6060dc !important;
+}
+
+.order-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-remove {
 .review-remove{
     text-align: right;
 }
-.review-productName{
+
+.review-productName {
     background-color: #c0a16b;
     border: solid 1px black;
 }
-.review-rate{
+
+.review-rate {
     color: red;
 
 }
-.review-contents{
+
+.review-contents {
     display: flex;
 }
-.review-image{
+
+.review-image {
     width: 200px;
     height: 100px;
 }
-.review-content{
+
+.review-content {
     border: solid 1px black;
     width: 100%;
+}
+
+.product-order-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+}
+
+.shipping-info-wrap {
+    display: flex;
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-order-wrap {
+    width: 70vw;
+}
+
+form[name=orderFrm] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

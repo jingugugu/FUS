@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
-<script src="/assets/js/user/userRegister.js"></script>
+<script src="/assets/js/user/userRegister.js?s"></script>
 <body>
   <jsp:include page="../layout/header.jsp" flush="false" />
   <div class="margin-block"></div>
@@ -18,11 +18,11 @@
 
     <div class="form-div"><label class="control-label flex-label"><span>아이디</span> <input type="text" name="memberId" class="form-input"></label></div>
 
-    <div class="form-div"><label class="control-label flex-label"><span>비밀번호</span> <input type="password" name="passwd" class="form-input"></label></div>
+    <div class="form-div"><label class="control-label flex-label"><span>비밀번호</span> <input type="password" name="passwd" class="form-input" minlength="2"></label></div>
 
-    <div class="form-div"><label class="control-label flex-label"><span>비밀번호 확인</span> <input type="password" id="passwdCheck" class="form-input"></label></div>
+    <div class="form-div"><label class="control-label flex-label"><span>비밀번호 확인</span> <input type="password" id="passwdCheck" class="form-input" minlength="2"></label></div>
 
-    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="name" class="form-input"></label></div>
+    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="userName" class="form-input"></label></div>
 
     <div class="form-div">
       <label class="control-label flex-label"><span>생년월일</span>

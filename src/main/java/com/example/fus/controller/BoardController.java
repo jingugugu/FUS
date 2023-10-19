@@ -98,10 +98,14 @@ public class BoardController extends HttpServlet {
             case "/modify":
                 BoardDTO editBoardDTO = boardService.getBoard(req);
                 req.setAttribute("editBoardDTO", editBoardDTO);
+                log.info(editBoardDTO);
                 req.getRequestDispatcher("/WEB-INF/board/boardModify.jsp").forward(req, resp);
                 break;
             case "/modify.do":
-                boardService.modifyBoard(req);
+                log.info("1");
+                log.info("String " + req.getParameter("boardNum"));
+                boardService.modifyBoard(req); //content를 받지 못하고 있음....
+                log.info("2");
                 resp.sendRedirect("/board/all");
                 break;
         }

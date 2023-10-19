@@ -125,7 +125,7 @@ public class BoardService {
             String content = req.getParameter("content");
             boardDTO.setMemberId(userDTO.getMemberId());
             boardDTO.setTitle(title);
-            boardDTO.setName(userDTO.getName());
+            boardDTO.setName(userDTO.getUserName());
             boardDTO.setContent(content);
 
             boardDTO.setFileName(fileName);
@@ -137,6 +137,7 @@ public class BoardService {
         }
         return "게시글 업데이트 성공";
     }
+
 
     /*선택된 글 내용 수정하기
     * request로 넘어온 값을 BoardDTO 객체에 저장해서 DAO에 전달.*/
