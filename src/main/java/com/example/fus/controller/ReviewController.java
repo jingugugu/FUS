@@ -22,7 +22,26 @@ public class ReviewController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        reviewService = new ReviewService();
+        path = req.getPathInfo();
+
+        if(path == null){
+            path = "/list";
+        }
+        switch (path) {
+            case "/remove":
+                int index = Integer.parseInt(req.getParameter("index"));
+                int productId = Integer.parseInt(req.getParameter("productId"));
+
+                //log.info("indexiiiiii" + index); 성공
+                try {
+                    reviewService.removeReview(index);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+                resp.sendRedirect("/product/view?productId="+productId);
+                break;
+        }
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
