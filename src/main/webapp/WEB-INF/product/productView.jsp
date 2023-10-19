@@ -3,6 +3,7 @@
 <%@ page import="com.example.fus.dto.ReviewDTO" %>
 <%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="ko">
 <head>
     <title>Product Detail</title>
@@ -44,7 +45,7 @@
                 <div><span>상품정보</span><p><%=productDTO.getDescription()%> </p></div>
                 <hr>
 
-                <div><span>가격</span><p><%=productDTO.getPrice()%></p></div>
+                <div><span>가격</span><p><fmt:formatNumber type="number" maxFractionDigits="3" value="<%=productDTO.getPrice()%>" /></p></div>
                 <hr>
 
                 <div><span>수량</span><p><input type="number" name="count" value="1"> </p></div>
