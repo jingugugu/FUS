@@ -98,7 +98,7 @@
                 <form name="frmRipple" method="post">
                     <div class="write-ripple-area">
                         <input type="hidden" name="boardNum" value="<%=boardNum%>"> <!--게시물의 번호-->
-                        <input name="name" type="text" class="ripple-form-name" value="${loginInfo.name}" placeholder="name">
+                        <input name="name" type="text" class="ripple-form-name" value="${loginInfo.userName}" placeholder="name">
                         <div class="ripple-content-box">
                             <textarea name="content" class="ripple-form-content" cols="50" rows="3"></textarea>
                             <span class="ripple-submit-btn" id="goRippleSubmit">등록</span>

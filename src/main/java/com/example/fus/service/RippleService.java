@@ -28,7 +28,6 @@ public class RippleService {
                 .memberId(userDTO.getMemberId())
                 .name(request.getParameter("name"))
                 .content(request.getParameter("content"))
-                .ip(request.getRemoteAddr())
                 .build();
         log.info(rippleDTO);
         return rippleDAO.insertRipple(rippleDTO);

@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function (){
     const memberId = document.querySelector("input[name=memberId]");
     const passwd = document.querySelector("input[name=passwd]"); 
     const passwdCheck = document.getElementById("passwdCheck");
-    const name = document.querySelector("input[name=name]");
+    const name = document.querySelector("input[name=userName]");
     const zipCode = document.querySelector("input[name=zipCode]");
     const findAnswer = document.querySelector("input[name=findAnswer]");
 
@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function (){
         let birthDateValue = birthYear.value+"-"+birthMonth.value+"-"+birthDay.value; // 생년월일 합치고
         let phoneValue = phone1.value+"-"+phone2.value+"-"+phone3.value;              // 폰번호 합쳐서
         birthDate.value = birthDateValue; // 밸류로
+        console.log(birthDate.value)
         phone.value = phoneValue;         // 넣어줌
         editFrm.submit();
     })
