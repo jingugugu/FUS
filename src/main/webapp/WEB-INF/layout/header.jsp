@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/css/plugins.css?a" />
 
   <!--Theme custom css -->
-  <link rel="stylesheet" href="/assets/css/style.css?bb3">
+  <link rel="stylesheet" href="/assets/css/style.css?bb23">
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="/assets/css/responsive.css" />
@@ -132,4 +132,5 @@
 
 <script src="/assets/js/plugins.js?a"></script>
 <script src="/assets/js/main.js?a"></script>
+<script src="/assets/js/layout/header.js"></script>
 </html>

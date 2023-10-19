@@ -146,11 +146,11 @@ public class BoardDAO {
 
 
     // 마이페이지 글 5개 가져오기
-    public List<BoardDTO> selectMemberBoards5(String memberId) throws SQLException{
+    public List<BoardDTO> selectMemberBoards(String memberId) throws SQLException{
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<BoardDTO> boardDTOList = new ArrayList<>();
 
-        String sql = "SELECT * FROM board WHERE memberId = ? LIMIT 5";
+        String sql = "SELECT * FROM board WHERE memberId = ?";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, memberId);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();

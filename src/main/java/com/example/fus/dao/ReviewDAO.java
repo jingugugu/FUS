@@ -58,11 +58,11 @@ public class ReviewDAO {
     }
 
     // 마이페이지 최근 리뷰 5개 가져오기
-    public List<ReviewDTO> selectMemberReviews5(String memberId) throws SQLException{
+    public List<ReviewDTO> selectMemberReviews(String memberId) throws SQLException{
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<ReviewDTO> reviewDTOList = new ArrayList<>();
 
-        String sql = "SELECT * FROM review WHERE memberId = ? LIMIT 5";
+        String sql = "SELECT * FROM review WHERE memberId = ?";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, memberId);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();

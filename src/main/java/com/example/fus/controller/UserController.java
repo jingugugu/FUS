@@ -44,16 +44,16 @@ public class UserController extends HttpServlet {
                 // 여기에 유저의 최근 구매내역, 리뷰, 게시글, 댓글 목록을 리퀘스트에 setAttribute 해줘야 함
                 // 게시글 5개
                 BoardService boardService = new BoardService();
-                req.setAttribute("userBoards", boardService.selectMemberBoards5(req));
+                req.setAttribute("userBoards", boardService.selectMemberBoards(req));
                 // 리플 5개
                 RippleService rippleService = new RippleService();
-                req.setAttribute("userRipples", rippleService.selectMemberRipples5(req));
+                req.setAttribute("userRipples", rippleService.selectMemberRipples(req));
                 // 리뷰 5개
                 ReviewService reviewService = new ReviewService();
-                req.setAttribute("userReviews", reviewService.selectMemberReviews5(req));
+                req.setAttribute("userReviews", reviewService.selectMemberReviews(req));
                 // 구매내역 5개
                 ShippingService shippingService = new ShippingService();
-                req.setAttribute("userShippings", shippingService.selectMemberShippings5(req));
+                req.setAttribute("userShippings", shippingService.selectMemberShippings(req));
                 req.getRequestDispatcher("/WEB-INF/user/myPage.jsp").forward(req, resp);
                 break;
             case "/edit" :

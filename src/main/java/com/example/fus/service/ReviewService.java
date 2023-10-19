@@ -61,11 +61,11 @@ public class ReviewService {
     }
 
     // 마이페이지 리뷰 5개 가져오기
-    public List<ReviewDTO> selectMemberReviews5(HttpServletRequest req) {
+    public List<ReviewDTO> selectMemberReviews(HttpServletRequest req) {
         List<ReviewDTO> reviewDTOList = null;
         try {
             UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
-            reviewDTOList = reviewDAO.selectMemberReviews5(userDTO.getMemberId());
+            reviewDTOList = reviewDAO.selectMemberReviews(userDTO.getMemberId());
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("ReviewService : selectMemberReviews5 에러");

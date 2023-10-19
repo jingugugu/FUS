@@ -1,4 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="com.example.fus.dto.ProductDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.fus.dto.ReviewDTO" %>
