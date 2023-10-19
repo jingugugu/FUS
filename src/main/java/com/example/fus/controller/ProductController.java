@@ -19,7 +19,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/product/*")
-@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "c:/upload/fus/product") //파일 용량 5mb, location="사진 저장되는 곳"
+@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "/dev/upload/fus/product") //파일 용량 5mb, location="사진 저장되는 곳"
 public class ProductController extends HttpServlet {
 
     private String path;
@@ -76,10 +76,6 @@ public class ProductController extends HttpServlet {
                 pageNum = req.getParameter("pageNum");
                 newProductDTOList = productService.listProduct(pageNum, "addDate");
                 req.setAttribute("newProducts", newProductDTOList);
-                orderProductDTOList = productService.listProduct(pageNum, "orderCount");
-                req.setAttribute("orderProducts", orderProductDTOList);
-                reviewProductDTOList = productService.listProduct(pageNum, "reviewCount");
-                req.setAttribute("reviewProducts", reviewProductDTOList);
                 count = productService.sizeProductList();
                 req.setAttribute("count", count);
                 req.setAttribute("pageNum", pageNum);

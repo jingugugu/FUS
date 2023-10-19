@@ -94,7 +94,7 @@
       <div class="form-div">
         <label class="control-label flex-label">
           <span>받는사람 이름</span>
-          <input type="text" name="receiverName" class="form-input" value="<%=userDTO.getName()%>">
+          <input type="text" name="receiverName" class="form-input" value="<%=userDTO.getUserName()%>">
         </label>
       </div>
       <div class="form-div">

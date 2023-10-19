@@ -16,7 +16,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/board/*")
-@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="/Users/ieunseo/Desktop/dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/upload" )
+@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="c:/upload/fus/board" )
 public class BoardController extends HttpServlet {
     private BoardService boardService = null;
     private String path = null;
@@ -63,7 +63,6 @@ public class BoardController extends HttpServlet {
                 req.setAttribute("boardDTO", boardDTO);
                 req.getRequestDispatcher("/WEB-INF/board/boardView.jsp").forward(req, resp);
                 break;
-
             case "/modify":
                 boardService.getBoard(req);
                 req.getRequestDispatcher("/WEB-INF/board/boardModify.jsp").forward(req, resp);
@@ -102,14 +101,12 @@ public class BoardController extends HttpServlet {
                 log.info(editBoardDTO);
                 req.getRequestDispatcher("/WEB-INF/board/boardModify.jsp").forward(req, resp);
                 break;
-
             case "/modify.do":
                 log.info("1");
                 log.info("String " + req.getParameter("boardNum"));
                 boardService.modifyBoard(req); //content를 받지 못하고 있음....
                 log.info("2");
                 resp.sendRedirect("/board/all");
-                log.info("3");
                 break;
         }
 

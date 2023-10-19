@@ -1649,6 +1649,16 @@ tems Section style
     width: 50%;
 }
 
+
+.mypage-review-rate {
+    color: red;
+    letter-spacing: -3px;
+}
+
+.user-contents {
+    width: 50%;
+}
+
 .user-contents-category {
     text-align: center;
 }
@@ -1662,7 +1672,20 @@ tems Section style
     background: black;
     color: white;
     margin: 0 10px;
+    padding: 3px 15px;
     border-radius: 0.4em;
+}
+
+.white-btn:hover {
+    color: white !important;
+}
+.purple-btn:hover {
+    color: black !important;
+}
+
+.user-name {
+    cursor: default;
+    color: #3b6cd7 !important;
 }
 
 .contents-category:hover {
@@ -1933,7 +1956,6 @@ tems Section style
     border: 2px solid red;
     border-radius: 0.3em;
     padding: 5px 10px;
-
 }
 
 .purple-a {
@@ -1944,8 +1966,6 @@ tems Section style
     font-size: 15px;
 }
 
-
-
 .board-flex-row {
     display: flex;
     justify-content: space-around;
@@ -1955,7 +1975,7 @@ tems Section style
     width: 7%;
     text-align: center;
 }
-
+/**/
 .board-date {
     width: 16%;
     text-align: center;
@@ -2092,6 +2112,101 @@ form[name=frmRipple] {
     flex-direction: column;
     align-items: center;
 }
-.product-order-wrap {
+/*리뷰 */
 
+.user-review {
+    height: 250px;
+    background-color: #4cae4c;
+    color: black;
+    border: solid 1px black;
+    margin-bottom: 40px;
+}
+
+.review-userId {
+    background-color: yellow;
+    border: solid 1px black;
+}
+
+.white-btn:hover {
+    color: white !important;
+}
+
+.mypage-category-table {
+    overflow: hidden;
+    height: 390px;
+}
+
+.mypage-category-toggle {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6060dc;
+}
+
+.purple-btn:hover {
+    color: #6060dc !important;
+}
+
+.order-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.review-remove {
+    text-align: right;
+}
+
+.review-productName {
+    background-color: #c0a16b;
+    border: solid 1px black;
+}
+
+.review-rate {
+    color: red;
+
+}
+
+.review-contents {
+    display: flex;
+}
+
+.review-image {
+    width: 200px;
+    height: 100px;
+}
+
+.review-content {
+    border: solid 1px black;
+    width: 100%;
+}
+
+.product-order-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70vw;
+}
+
+.shipping-info-wrap {
+    display: flex;
+    width: 50vw;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-order-wrap {
+    width: 70vw;
+}
+
+form[name=orderFrm] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

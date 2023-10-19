@@ -6,7 +6,8 @@
     int pagePerBlock = 10; // 페이지 출력 시 나올 범위.
     int pageNum = Integer.parseInt((String) request.getAttribute("pageNum"));
     String category = request.getParameter("category");
-    int totalPage = Integer.parseInt((String) request.getAttribute("count")) / 4; // 총 게시물 갯수
+    int count =  Integer.parseInt((String)request.getAttribute("count")); // 총 게시물 갯수
+    int totalPage = count % 8 == 0 ? (count / 8) : (count / 8) + 1; // 총 페이지
     // 총 게시물 갯수를 pagePerBlock으로 나눴을 때 나머지 없이 딱 떨어지면 바로 몫으로 페이징, 나머지가 있으면 +1 해서 페이징
     int totalBlock = totalPage % pagePerBlock == 0 ? totalPage / pagePerBlock : totalPage / pagePerBlock + 1; // 6 % 5 0
     int thisBlock = ((pageNum - 1) / pagePerBlock) + 1; // 현재 블럭
@@ -115,42 +116,6 @@
                         <a href="/product/modify?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
                         <a href="/product/remove?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
                     </p>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h3 class="products-title">Hot items</h3>
-    <div class="flex-test">
-        <c:forEach var="orderProduct" items="${orderProducts}">
-            <div class="product-list-wrap" style="width: 250px">
-                <div class="product-img-scale-wrap">
-                    <img class="product-img" src="/upload/fus/product/${orderProduct.fileName}" style="width: 100px;">
-                </div>
-                <h3>${orderProduct.productName}</h3>
-                <p>${orderProduct.description}</p>
-                <p>${orderProduct.price}</p>
-                <p>
-                    <a href="/product/modify?productId=${orderProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
-                    <a href="/product/remove?productId=${orderProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
-                </p>
-            </div>
-        </c:forEach>
-    </div>
-
-    <h3 class="products-title">Most reviews</h3>
-    <div class="flex-test">
-        <c:forEach var="reviewProduct" items="${reviewProducts}">
-            <div class="product-list-wrap" style="width: 250px">
-                <div class="product-img-scale-wrap">
-                    <img class="product-img" src="/upload/fus/product/${reviewProduct.fileName}" style="width: 100px;">
-                </div>
-                <h3>${reviewProduct.productName}</h3>
-                <p>${reviewProduct.description}</p>
-                <p>${reviewProduct.price}</p>
-                <p>
-                    <a href="/product/modify?productId=${reviewProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
-                    <a href="/product/remove?productId=${reviewProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>
-                </p>
             </div>
         </c:forEach>
     </div>
