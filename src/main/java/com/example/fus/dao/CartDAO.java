@@ -39,6 +39,7 @@ public class CartDAO {
 
     // 장바구니 추가
     public void insertCart(CartDTO cartDTO) throws SQLException {
+
         String sql = "INSERT INTO cart (productId, memberId, productName, count, price, fileName, addDate) VALUES (?, ?, ?, ?, ?, ?, now())";
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);

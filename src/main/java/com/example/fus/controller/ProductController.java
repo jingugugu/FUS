@@ -75,10 +75,6 @@ public class ProductController extends HttpServlet {
                 pageNum = req.getParameter("pageNum");
                 newProductDTOList = productService.listProduct(pageNum, "addDate");
                 req.setAttribute("newProducts", newProductDTOList);
-                orderProductDTOList = productService.listProduct(pageNum, "orderCount");
-                req.setAttribute("orderProducts", orderProductDTOList);
-                reviewProductDTOList = productService.listProduct(pageNum, "reviewCount");
-                req.setAttribute("reviewProducts", reviewProductDTOList);
                 count = productService.sizeProductList();
                 req.setAttribute("count", count);
                 req.setAttribute("pageNum", pageNum);
