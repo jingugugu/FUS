@@ -48,8 +48,8 @@
 
     <div class="form-group row">
         <label class="col-sm-2 control-label">Content</label>
-        <div class="col-sm-8" style="word-break: break-all;">
-            <img class="card-img-top" src="/upload/fus/board/<%=board.getFileName()%>">
+        <div class="col-sm-8" style="word-break: break-all; height: 200px">
+            <img class="card-img-top" src="Users/ieunseo/Desktop/dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/upload/board<%=board.getFileName()%>">
             <%=board.getContent()%>
         </div>
     </div>

@@ -135,6 +135,7 @@ public class BoardDAO {
             preparedStatement.setInt(3, boardDTO.getBoardNum());
 
             preparedStatement.executeUpdate();
+
         } else {
             String sql = "UPDATE board SET content = ? WHERE boardNum = ?";
             @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);

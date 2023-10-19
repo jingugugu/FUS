@@ -25,10 +25,10 @@
 </div>
 
 <form id="ModifyFrm" action="/board/modify.do" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="boardNum" value="<%=boardDTO.getBoardNum()%>">
 <!--제목-->
     <div class="form-group-title1" align="center">
         <label class="control-label">
-            <input type="hidden" name="boardNum" value="<%=boardDTO.getBoardNum()%>">
             <input type="text" name="title" class="text-title" minlength="5" maxlength="100" placeholder="제목" value="<%=boardDTO.getTitle()%>" readonly>
             <!--파일-->
             <div>
