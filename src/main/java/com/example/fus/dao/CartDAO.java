@@ -13,7 +13,7 @@ import java.util.List;
 @Log4j2
 public class CartDAO {
 
-    // 장바구니 목록88
+    // 장바구니 목록 88
     public List<CartDTO> selectAll(String memberId) throws SQLException {
         String sql = "SELECT * FROM cart WHERE memberId = ?";
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();

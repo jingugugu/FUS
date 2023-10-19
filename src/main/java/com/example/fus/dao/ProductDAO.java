@@ -59,18 +59,17 @@ public class ProductDAO {
     public void insertProduct(ProductDTO product) throws Exception{
 
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
-        String sql = "insert into product values (?,?,?,?,?,?,?,now(),?,?)";
+        String sql = "insert into product (`productName`, `category`, `description`, `price`, `unitsInStock`, `fileName`, `addDate`, `reviewCount`, `orderCount`) values (?,?,?,?,?,?,now(),?,?)";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
 
-        preparedStatement.setInt(1, product.getProductId());
-        preparedStatement.setString(2, product.getProductName());
-        preparedStatement.setString(3, product.getCategory());
-        preparedStatement.setString(4, product.getDescription());
-        preparedStatement.setInt(5, product.getPrice());
-        preparedStatement.setInt(6, product.getUnitsInStock());
-        preparedStatement.setString(7, product.getFileName());
+        preparedStatement.setString(1, product.getProductName());
+        preparedStatement.setString(2, product.getCategory());
+        preparedStatement.setString(3, product.getDescription());
+        preparedStatement.setInt(4, product.getPrice());
+        preparedStatement.setInt(5, product.getUnitsInStock());
+        preparedStatement.setString(6, product.getFileName());
+        preparedStatement.setInt(7, 0);
         preparedStatement.setInt(8, 0);
-        preparedStatement.setInt(9, 0);
         log.info(preparedStatement.executeUpdate());
     }
 

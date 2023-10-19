@@ -25,7 +25,6 @@
         <h1 class="display-3">회원 정보 수정</h1>
     </div>
 </div>
-
 <form id="editFrm" name="editFrm" action="/user/edit" method="post">
 
     <div class="form-div"><label class="control-label flex-label"><span>아이디</span> <input type="text" name="memberId" class="form-input" value="<%=userDTO.getMemberId()%>" readonly></label></div>
