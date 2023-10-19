@@ -25,7 +25,6 @@
         <h1 class="display-3">회원 정보 수정</h1>
     </div>
 </div>
-
 <form id="editFrm" name="editFrm" action="/user/edit" method="post">
 
     <div class="form-div"><label class="control-label flex-label"><span>아이디</span> <input type="text" name="memberId" class="form-input" value="<%=userDTO.getMemberId()%>" readonly></label></div>
@@ -34,7 +33,7 @@
 
     <div class="form-div"><label class="control-label flex-label"><span>비밀번호 확인</span> <input type="password" id="passwdCheck" class="form-input" value="<%=userDTO.getPasswd()%>"></label></div>
 
-    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="name" class="form-input" value="<%=userDTO.getUserName()%>"></label></div>
+    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="userName" class="form-input" value="<%=userDTO.getUserName()%>"></label></div>
 
     <div class="form-div">
         <label class="control-label flex-label"><span>생년월일</span>
