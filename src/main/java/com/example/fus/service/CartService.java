@@ -97,6 +97,20 @@ public class CartService {
         }
     }
 
+    // 주문완료 후 장바구니에서 완료 목록 삭제
+    public void orderFinish(HttpServletRequest request, String[] productId) {
+        try {
+            log.info("service" + productId);
+            HttpSession session = request.getSession();
+            UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
+            String memberId = userDTO.getMemberId();
+            cartDAO.orderFinish(memberId, productId);
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            log.info("주문완료 삭제 에러");
+        }
+    }
+
     public void oneRemoveCart(HttpServletRequest request) {
         try {
             HttpSession session = request.getSession();
