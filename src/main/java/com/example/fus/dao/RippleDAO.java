@@ -67,7 +67,7 @@ public class RippleDAO {
     }
 
     // 마이페이지 리플 5개 가져오기
-    public List<RippleDTO> selectMemberRipples5(String memberId) throws SQLException {
+    public List<RippleDTO> selectMemberRipples(String memberId) throws SQLException {
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<RippleDTO> rippleDTOS = new ArrayList<>();
 

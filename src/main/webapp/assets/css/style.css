@@ -1616,8 +1616,12 @@ tems Section style
     margin-left: 100px;
 }
 
-.user-board, .user-review, .user-ripple {
-    width: 40vw;
+.user-contents tbody {
+    width: 100%;
+}
+
+.user-shipping, .user-board, .user-review, .user-ripple {
+    width: 100%;
     height: 100%;
 }
 
@@ -1630,7 +1634,7 @@ tems Section style
     width: 100%;
 }
 
-.user-container th, .user-container td {
+.user-container th, .user-container td{
     width: 150px;
     padding: 8px 5px;
 }
@@ -1639,20 +1643,43 @@ tems Section style
     width: 50%;
 }
 
+
+.mypage-review-rate {
+    color: red;
+    letter-spacing: -3px;
+}
+
+.user-contents {
+    width: 50%;
+}
+
 .user-contents-category {
     text-align: center;
 }
 
 .contents-category:first-child {
-    margin-left: 12vw;
+    margin-left: 19vw;
 }
 
 .contents-category {
     border: none;
-    background: black;
+    background: #3b6cd7;
     color: white;
     margin: 0 10px;
+    padding: 3px 15px;
     border-radius: 0.4em;
+}
+
+.white-btn:hover {
+    color: white !important;
+}
+.purple-btn:hover {
+    color: black !important;
+}
+
+.user-name {
+    cursor: default;
+    color: #3b6cd7 !important;
 }
 
 .contents-category:hover {
@@ -1925,14 +1952,19 @@ tems Section style
     width: 7%;
     text-align: center;
 }
-
+/**/
 .board-date {
     width: 16%;
     text-align: center;
 }
 
 .board-title {
-    width: 70%;
+    width: 55%;
+    text-align: center;
+}
+
+.board-memberId {
+    width: 15%;
     text-align: center;
 }
 .board-container {
@@ -2040,6 +2072,11 @@ form[name=frmRipple] {
     height: 240px;
 }
 
+.padding-left-sixteen {
+    padding-left: 16px !important;
+}
+
+/*   오더페이지 구역   */
 .shipping-container {
     display: flex;
     flex-direction: column;
@@ -2052,6 +2089,19 @@ form[name=frmRipple] {
     color: white !important;
 }
 
+.mypage-category-table {
+    overflow: hidden;
+    height: 390px;
+}
+
+.mypage-category-toggle {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6060dc;
 .purple-btn:hover {
     color: #6060dc !important;
 }

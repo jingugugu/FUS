@@ -107,15 +107,15 @@
 
     <h3 class="products-title">Just Dropped</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="newProduct" items="${newProducts}">
             <div class="product-list-wrap">
-                <a href="/product/view?productId=${product.productId}" class="product-wrap" role="button">
+                <a href="/product/view?productId=${newProduct.productId}" class="product-wrap" role="button">
                     <div class="product-img-scale-wrap">
-                        <img class="product-img" src="/upload/fus/product/${product.fileName}">
+                        <img class="product-img" src="/upload/fus/product/${newProduct.fileName}">
                     </div>
-                    <h4 class="product-name">${product.productName}</h4>
-                    <h6 class="product-description">${product.description}</h6>
-                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></h6>
+                    <h4 class="product-name">${newProduct.productName}</h4>
+                    <h6 class="product-description">${newProduct.description}</h6>
+                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${newProduct.price}" /></h6>
                 </a>
             </div>
         </c:forEach>
@@ -123,15 +123,15 @@
 
     <h3 class="products-title">Hot items</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="orderProduct" items="${orderProducts}">
         <div class="product-list-wrap">
-                <a href="/product/view?productId=${product.productId}" class="product-wrap" role="button">
+                <a href="/product/view?productId=${orderProduct.productId}" class="product-wrap" role="button">
                     <div class="product-img-scale-wrap">
-                        <img class="product-img" src="/upload/fus/product/${product.fileName}">
+                        <img class="product-img" src="/upload/fus/product/${orderProduct.fileName}">
                     </div>
-                    <h4 class="product-name">${product.productName}</h4>
-                    <h6 class="product-description">${product.description}</h6>
-                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></h6>
+                    <h4 class="product-name">${orderProduct.productName}</h4>
+                    <h6 class="product-description">${orderProduct.description}</h6>
+                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${orderProduct.price}" /></h6>
                 </a>
         </div>
         </c:forEach>
@@ -139,15 +139,15 @@
 
     <h3 class="products-title">Most reviews</h3>
     <div class="flex-test">
-        <c:forEach var="product" items="${products}">
+        <c:forEach var="reviewProduct" items="${reviewProducts}">
         <div class="product-list-wrap">
-                <a href="/product/view?productId=${product.productId}" class="product-wrap" role="button">
+                <a href="/product/view?productId=${reviewProduct.productId}" class="product-wrap" role="button">
                     <div class="product-img-scale-wrap">
-                        <img class="product-img" src="/upload/fus/product/${product.fileName}">
+                        <img class="product-img" src="/upload/fus/product/${reviewProduct.fileName}">
                     </div>
-                    <h4 class="product-name">${product.productName}</h4>
-                    <h6 class="product-description">${product.description}</h6>
-                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></h6>
+                    <h4 class="product-name">${reviewProduct.productName}</h4>
+                    <h6 class="product-description">${reviewProduct.description}</h6>
+                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${reviewProduct.price}" /></h6>
                 </a>
         </div>
         </c:forEach>

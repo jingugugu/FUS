@@ -34,11 +34,21 @@ public class ProductController extends HttpServlet {
         }
         switch (path) {
             case "/list":
-                String pageNum = req.getParameter("pageNum");
-                String category = req.getParameter("category");
-                List<ProductDTO> productDTOList = productService.categoryProducts(pageNum, category);
+                String pageNum = "1";
+                if(req.getParameter("pageNum") != null){
+                    pageNum = req.getParameter("pageNum");
+                };
+                String category = "ALL";
+                if(req.getParameter("category") != null) {
+                    category = req.getParameter("category");
+                }
+                List<ProductDTO> newProductDTOList = productService.categoryProducts(pageNum, category, "addDate");
+                req.setAttribute("newProducts", newProductDTOList);
+                List<ProductDTO> orderProductDTOList = productService.categoryProducts(pageNum, category, "orderCount");
+                req.setAttribute("orderProducts", orderProductDTOList);
+                List<ProductDTO> reviewProductDTOList = productService.categoryProducts(pageNum, category, "reviewCount");
+                req.setAttribute("reviewProducts", reviewProductDTOList);
                 String count = category.equals("ALL") ? productService.sizeProductList() : productService.sizeCategoryProductList(category);
-                req.setAttribute("products", productDTOList);
                 req.setAttribute("count", count);
                 req.setAttribute("pageNum", pageNum);
                 req.setAttribute("category", category);
@@ -63,9 +73,13 @@ public class ProductController extends HttpServlet {
                 break;
             case "/edit":
                 pageNum = req.getParameter("pageNum");
-                productDTOList = productService.listProduct(pageNum);
+                newProductDTOList = productService.listProduct(pageNum, "addDate");
+                req.setAttribute("newProducts", newProductDTOList);
+                orderProductDTOList = productService.listProduct(pageNum, "orderCount");
+                req.setAttribute("orderProducts", orderProductDTOList);
+                reviewProductDTOList = productService.listProduct(pageNum, "reviewCount");
+                req.setAttribute("reviewProducts", reviewProductDTOList);
                 count = productService.sizeProductList();
-                req.setAttribute("products", productDTOList);
                 req.setAttribute("count", count);
                 req.setAttribute("pageNum", pageNum);
                 req.getRequestDispatcher("/WEB-INF/product/productEdit.jsp").forward(req, resp);
@@ -94,7 +108,7 @@ public class ProductController extends HttpServlet {
             case "/search":
                 pageNum = req.getParameter("pageNum");
                 String word = req.getParameter("word");
-                productDTOList = productService.searchProducts(pageNum, word);
+                List<ProductDTO> productDTOList = productService.searchProducts(pageNum, word);
                 count = productService.sizeSearchProductList(word);
                 req.setAttribute("products", productDTOList);
                 log.info("search :");

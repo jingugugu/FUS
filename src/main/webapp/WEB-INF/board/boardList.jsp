@@ -37,6 +37,7 @@
                 <tr class="board-flex-row">
                     <th class="board-num">번호</th>
                     <th class="board-title">제목</th>
+                    <th class="board-memberId">작성자</th>
                     <th class="board-count">조회수</th>
                     <th class="board-date">등록일</th>
                 </tr>
@@ -47,6 +48,7 @@
                     <td class="board-title">
                         <a href="/board/view?boardNum=${boardDTO.boardNum}&pageNum=${pageNum}">${boardDTO.title}</a>
                     </td>
+                    <td class="board-memberId">${boardDTO.memberId}</td>
                     <td class="board-count">${boardDTO.count}</td>
                     <td class="board-date">${dueDate}</td>
                     <a href="/board/remove?boardNum=${boardDTO.boardNum}">

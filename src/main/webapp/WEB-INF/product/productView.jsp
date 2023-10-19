@@ -57,7 +57,7 @@
             for(int j = 0; j < reviewList.size(); j++){
                 ReviewDTO reviewDTO = (ReviewDTO) reviewList.get(j);
     %>
-    <div class="user-review">
+    <div class="user-review2">
         <p><%=reviewDTO.getProductName()%></p>
         <p><%=reviewDTO.getTitle()%></p>
         <p><%=reviewDTO.getContent()%></p>
