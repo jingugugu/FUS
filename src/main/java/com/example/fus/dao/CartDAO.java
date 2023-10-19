@@ -77,6 +77,23 @@ public class CartDAO {
         }
     }
 
+    //주문완료 후 완료목록 삭제
+    public void orderFinish(String memberId, String[] productId) throws SQLException {
+        for (String productIds : productId) {
+            try {
+                String sql = "DELETE FROM cart WHERE memberId = ? AND productId = ?";
+                @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+                @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, memberId);
+                preparedStatement.setString(2, productIds);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                log.info(e.getMessage());
+                log.info("체크삭제 cartDao 에러");
+            }
+        }
+    }
+
     // 개별 삭제
     public void oneRemoveCart(String memberId, String productId) throws SQLException {
         try {

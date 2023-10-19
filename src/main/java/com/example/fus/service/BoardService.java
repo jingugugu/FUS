@@ -164,14 +164,14 @@ public class BoardService {
 
     }
 
-    public List<BoardDTO> selectMemberBoards5(HttpServletRequest req) {
+    public List<BoardDTO> selectMemberBoards(HttpServletRequest req) {
         List<BoardDTO> boardDTOList = null;
         try {
             UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
-            boardDTOList = boardDAO.selectMemberBoards5(userDTO.getMemberId());
+            boardDTOList = boardDAO.selectMemberBoards(userDTO.getMemberId());
         } catch (SQLException e) {
             e.printStackTrace();
-            log.error("BoardService : selectMemberBoards5 에러");
+            log.error("BoardService : selectMemberBoards 에러");
         }
         return boardDTOList;
     }

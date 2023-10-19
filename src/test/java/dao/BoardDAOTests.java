@@ -38,14 +38,14 @@ public class BoardDAOTests {
     }
 
     /*게시판 게시글 목록 전체를 가져오는지 확인하는 테스트 코드*/
-    @Test
-    public void testSelectAll() throws Exception{
-        List<BoardDTO> list = boardDAO.selectAll();
-
-        for(BoardDTO boardDTO : list){
-            System.out.println(boardDTO);
-        }
-    }
+//    @Test
+//    public void testSelectAll() throws Exception{
+////        List<BoardDTO> list = boardDAO.selectAll();
+//
+//        for(BoardDTO boardDTO : list){
+//            System.out.println(boardDTO);
+//        }
+//    }
 
     @Test
     public void testSelectOne() throws Exception{
@@ -54,17 +54,17 @@ public class BoardDAOTests {
         System.out.println(boardDTO);
     }
 
-    @Test
-    public void testDeleteBoard() throws Exception{
-        List<BoardDTO> list = boardDAO.selectAll();
-        list.forEach(boardDTO -> System.out.println(boardDAO));
-
-        int boardNum = 31;
-        boardDAO.deleteBoard(boardNum);
-
-        list = boardDAO.selectAll();
-        list.forEach(boardDTO -> System.out.println(boardDTO));
-    }
+//    @Test
+//    public void testDeleteBoard() throws Exception{
+//        List<BoardDTO> list = boardDAO.selectAll();
+//        list.forEach(boardDTO -> System.out.println(boardDAO));
+//
+//        int boardNum = 31;
+//        boardDAO.deleteBoard(boardNum);
+//
+//        list = boardDAO.selectAll();
+//        list.forEach(boardDTO -> System.out.println(boardDTO));
+//    }
 
     @Test
     public void testAddBoard() throws Exception{

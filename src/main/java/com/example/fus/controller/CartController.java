@@ -78,16 +78,16 @@ public class CartController extends HttpServlet {
                 break;
             case "/selectOrder":
                 checkIds = req.getParameterValues("checkId");
-                for (String id : checkIds) {
-                    log.info(id);
-                }
-                log.info("controll" + checkIds);
-                List<CartDTO> carts = cartService.orderCart(req, checkIds);
-                req.setAttribute("cartDTOList", carts);
-                req.getRequestDispatcher("/WEB-INF/cart/orderView.jsp").forward(req, resp);
-                break;
+                log.info(checkIds);
+                    for (String id : checkIds) {
+                        log.info(id);
+                    }
+                    log.info("controll" + checkIds);
+                    List<CartDTO> carts = cartService.orderCart(req, checkIds);
+                    req.setAttribute("cartDTOList", carts);
+                    req.getRequestDispatcher("/WEB-INF/cart/orderView.jsp").forward(req, resp);
+                    break;
             case "/orderFinish":
-
                 req.getRequestDispatcher("/WEB-INF/cart/orderFinish.jsp").forward(req, resp);
         }
     }

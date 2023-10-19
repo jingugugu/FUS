@@ -1,6 +1,7 @@
 <%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%
   // 페이징 세팅
   int pagePerBlock = 10; // 페이지 출력 시 나올 범위.
@@ -36,17 +37,17 @@
 
 <div class="wrapper2 products-wrapper">
 
-  <h3 class="products-title">검색 결과</h3>
+  <h3 class="products-title">"${word}"에 대한 검색결과</h3>
   <div class="flex-test">
     <c:forEach var="product" items="${products}">
       <div class="product-list-wrap">
-        <a href="/product/view?productId=${product.productId}" class="btn btn-secondary" role="button">
+        <a href="/product/view?productId=${product.productId}" class="product-wrap" role="button">
           <div class="product-img-scale-wrap">
             <img class="product-img" src="/upload/fus/product/${product.fileName}" style="width: 100px;">
           </div>
-          <h3>${product.productName}</h3>
-          <p>${product.description}</p>
-          <p>${product.price}</p>
+          <h4 class="product-name">${product.productName}</h4>
+          <h6 class="product-description">${product.description}</h6>
+          <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${product.price}" /></h6>
         </a>
       </div>
     </c:forEach>

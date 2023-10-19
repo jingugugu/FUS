@@ -18,5 +18,6 @@ public class ProductDTO {
     private int unitsInStock; //상품 재고
     private String fileName; //상품 이미지 파일
     private String addDate; //등록 날짜
-
+    private int reviewCount; //리뷰 수
+    private int orderCount; //판매 수
 }

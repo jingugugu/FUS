@@ -5,6 +5,11 @@
 <html>
 <head>
   <title>Title</title>
+  <style>
+    .flex-label {
+      justify-content: start !important;
+    }
+  </style>
 </head>
 <script src="https://spi.maps.daum.net/imap/map_js_init/postcode.v2.js"></script>
 <script src="/assets/js/shipping/shipping.js"></script>
@@ -14,6 +19,7 @@
   List cartDTOList = (List) request.getAttribute("cartDTOList"); // null, 정보가 들어있거나
   UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
 %>
+<div class="margin-block"></div>
 
 <div class="jumbotron">
   <div class="container">
@@ -37,7 +43,7 @@
 
 <div class="shipping-container">
   <form id="orderFrm" name="orderFrm" action="/shipping/order" method="post">
-    <div class="product-order-wrap" style="padding-top: 50px">
+    <div class="product-order-wrap" style="padding-top: 10px">
       <table class="table table-hover">
         <tr>
           <td>사진</td>
@@ -62,6 +68,7 @@
         %>
 
           <tr>
+            <input type="hidden" name="productId" value="<%=cartDTO.getProductId()%>">
             <td><img src="/upload/fus/product/<%=cartDTO.getFileName()%>" style="width: 100px;"></td>
             <td><%=cartDTO.getProductName()%></td>
             <td>₩<%=cartDTO.getPrice()%>원</td>
@@ -93,7 +100,7 @@
       <div class="form-div">
         <label class="control-label flex-label">
           <span>우편번호</span>
-          <input type="text" name="receiverZipCode" id="receiverZipCode" class="form-input" value="<%=userDTO.getZipCode()%>" readonly>
+          <input type="text" name="receiverZipCode" id="receiverZipCode" class="form-input" style="width: 34%" value="<%=userDTO.getZipCode()%>" readonly>
           <span class="btnFindZipCode btn btn-secondary" style="cursor: pointer">우편번호 검색</span>
         </label>
       </div>
@@ -109,11 +116,9 @@
           <input type="text" name="receiverAddress02" id="receiverAddress02" class="form-input" value="<%=userDTO.getAddress02()%>">
         </label>
       </div>
-      <div class="form-div">
-        <div class="col-sm-10">
-          <a href="/cart/list" class="btn btn-secondary" role="button">이전</a>
-          <input type="submit" value="주문" class="btn btn-primary">
-        </div>
+      <div class="order-button">
+          <a href="/cart/list" class="btn purple-btn btn-secondary1" role="button">이전</a>
+          <input type="submit" value="주문" class="btn white-btn btn-primary1">
       </div>
     </div>
   </form>

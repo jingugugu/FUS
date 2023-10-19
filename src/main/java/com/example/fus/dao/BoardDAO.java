@@ -147,7 +147,7 @@ public class BoardDAO {
 
 
     // 마이페이지 글 5개 가져오기
-    public List<BoardDTO> selectMemberBoards5(String memberId) throws SQLException{
+    public List<BoardDTO> selectMemberBoards(String memberId) throws SQLException{
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<BoardDTO> boardDTOList = new ArrayList<>();
 

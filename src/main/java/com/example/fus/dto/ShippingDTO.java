@@ -19,5 +19,5 @@ public class ShippingDTO {
     private String receiverZipCode; //받는 우편번호
     private String receiverAddress01; //받는 주소1
     private String receiverAddress02; //받는 주소2
-    private String addDate; //등록 날짜
+    private String orderDate; //구매 날짜
 }

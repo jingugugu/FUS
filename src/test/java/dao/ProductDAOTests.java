@@ -35,7 +35,7 @@ public class ProductDAOTests {
     // 카테고리별 전체 출력 (완)
     @Test
     public void testCategoryProductList() throws Exception{
-        List<ProductDTO> list = productDAO.getCategoryProducts("1", "EPL");
+        List<ProductDTO> list = productDAO.getCategoryProducts("1", "EPL", "orderCount");
         //1)람다와 스트림 이요해서 출력.
         list.forEach(product -> System.out.println(product));
         //2)foreach사용
@@ -47,12 +47,14 @@ public class ProductDAOTests {
     //전체 출력 (완)
     @Test
     public void testAddList() throws Exception{
-        List<ProductDTO> list = productDAO.selectAll("1");
+        List<ProductDTO> list = productDAO.selectAll("1", "orderCount");
         //1)람다와 스트림 이요해서 출력.
-        list.forEach(product -> System.out.println(product));
+        list.forEach(product -> log.info(product));
+        log.info("-----------");
+        List<ProductDTO> newlist = productDAO.selectAll("1", "addDate");
         //2)foreach사용
         for(ProductDTO productDTO : list) {
-            System.out.println(productDTO);
+            log.info(productDTO);
         }
     }
 

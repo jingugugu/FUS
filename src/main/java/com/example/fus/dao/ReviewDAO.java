@@ -1,5 +1,6 @@
 package com.example.fus.dao;
 
+import com.example.fus.dto.BoardDTO;
 import com.example.fus.dto.ReviewDTO;
 import lombok.Cleanup;
 import lombok.extern.log4j.Log4j2;
@@ -42,6 +43,8 @@ public class ReviewDAO {
         List<ReviewDTO> reviewList = new ArrayList<>();
         while(resultSet.next()){
             ReviewDTO reviewDTO = new ReviewDTO();
+            reviewDTO.setIndex(resultSet.getInt("index"));
+            reviewDTO.setProductId(resultSet.getInt("productId"));
             reviewDTO.setProductName(resultSet.getString("productName"));
             reviewDTO.setMemberId(resultSet.getString("memberId"));
             reviewDTO.setRate(resultSet.getInt("rate"));
@@ -52,5 +55,41 @@ public class ReviewDAO {
             reviewList.add(reviewDTO);
         }
         return reviewList;
+    }
+
+    // 마이페이지 최근 리뷰 5개 가져오기
+    public List<ReviewDTO> selectMemberReviews(String memberId) throws SQLException{
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        List<ReviewDTO> reviewDTOList = new ArrayList<>();
+
+        String sql = "SELECT * FROM review WHERE memberId = ?";
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, memberId);
+        @Cleanup ResultSet resultSet = preparedStatement.executeQuery();
+
+        while(resultSet.next()){
+            ReviewDTO reviewDTO = new ReviewDTO();
+            reviewDTO.setIndex(resultSet.getInt("index"));
+            reviewDTO.setProductId(resultSet.getInt("productId"));
+            reviewDTO.setMemberId(resultSet.getString("memberId"));
+            reviewDTO.setProductName(resultSet.getString("productName"));
+            reviewDTO.setRate(resultSet.getInt("rate"));
+            reviewDTO.setTitle(resultSet.getString("title"));
+            reviewDTO.setContent(resultSet.getString("content"));
+            reviewDTO.setFileName(resultSet.getString("fileName"));
+            reviewDTO.setAddDate(resultSet.getString("addDate"));
+            reviewDTOList.add(reviewDTO);
+        }
+        return reviewDTOList;
+    }
+//리뷰 삭제하는 sql
+    public void removeReview(int index) throws Exception{
+        String sql = "delete from review where `index`=?";
+
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1, index);
+        preparedStatement.executeUpdate();
     }
 }

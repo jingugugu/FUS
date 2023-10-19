@@ -1,12 +1,15 @@
 package com.example.fus.service;
 
 import com.example.fus.dao.ReviewDAO;
+import com.example.fus.dto.BoardDTO;
 import com.example.fus.dto.ReviewDTO;
+import com.example.fus.dto.UserDTO;
 import lombok.extern.log4j.Log4j2;
 import org.apache.commons.beanutils.BeanUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
+import java.sql.SQLException;
 import java.util.List;
 
 @Log4j2
@@ -55,5 +58,29 @@ public class ReviewService {
             log.info("ReviewService listReview fail!@!");
         }
         return reviewList;
+    }
+
+    // 마이페이지 리뷰 5개 가져오기
+    public List<ReviewDTO> selectMemberReviews(HttpServletRequest req) {
+        List<ReviewDTO> reviewDTOList = null;
+        try {
+            UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
+            reviewDTOList = reviewDAO.selectMemberReviews(userDTO.getMemberId());
+        } catch (SQLException e) {
+            e.printStackTrace();
+            log.error("ReviewService : selectMemberReviews5 에러");
+        }
+        return reviewDTOList;
+    }
+    //리뷰를 삭제하기
+    public void removeReview(int index) throws Exception{
+        try{
+            log.info("indexiiiiii" + index);
+            reviewDAO.removeReview(index);
+
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            log.info("RemoveReview error");
+        }
     }
 }
