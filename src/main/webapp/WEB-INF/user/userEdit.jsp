@@ -34,7 +34,7 @@
 
     <div class="form-div"><label class="control-label flex-label"><span>비밀번호 확인</span> <input type="password" id="passwdCheck" class="form-input" value="<%=userDTO.getPasswd()%>"></label></div>
 
-    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="name" class="form-input" value="<%=userDTO.getUserName()%>"></label></div>
+    <div class="form-div"><label class="control-label flex-label"><span>이름</span> <input type="text" name="userName" class="form-input" value="<%=userDTO.getUserName()%>"></label></div>
 
     <div class="form-div">
         <label class="control-label flex-label"><span>생년월일</span>
