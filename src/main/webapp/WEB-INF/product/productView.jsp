@@ -1,6 +1,7 @@
 <%@ page import="com.example.fus.dto.ProductDTO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.fus.dto.ReviewDTO" %>
+<%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html lang="ko">
 <head>
@@ -13,6 +14,11 @@
     ProductDTO productDTO = (ProductDTO) request.getAttribute("product");
     List reviewList = (List) request.getAttribute("reviewList");
 
+    String memberId = null;
+    if(session.getAttribute("loginInfo") != null){
+        UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
+        memberId = userDTO.getMemberId();
+    }
 %>
 <div class="margin-block"></div>
 
@@ -57,12 +63,25 @@
             for(int j = 0; j < reviewList.size(); j++){
                 ReviewDTO reviewDTO = (ReviewDTO) reviewList.get(j);
     %>
-    <div class="user-review2">
-        <p><%=reviewDTO.getProductName()%></p>
-        <p><%=reviewDTO.getTitle()%></p>
-        <p><%=reviewDTO.getContent()%></p>
-        <p><%=reviewDTO.getAddDate()%></p>
-        <p><a href="/review/remove?review"></a></p>
+    <div class="user-review">
+        <div class="review-userController">
+            <div class="review-userId"><%=memberId%></div>
+            <div class="review-productName"><%=reviewDTO.getProductName()%></div>
+            <div class="review-remove"><a href="/review/remove?index=<%=reviewDTO.getIndex()%>&productId=<%=reviewDTO.getProductId()%>">삭제</a></div>
+        </div>
+        <div class="review-title"><%=reviewDTO.getTitle()%></div>
+        <td class="review-rate">
+            <c:forEach begin="1" end="<%=reviewDTO.getRate()%>">
+                ★
+            </c:forEach>
+        </td>
+        <div class="review-addDate"><%=reviewDTO.getAddDate()%></div>
+        <div class="review-contents">
+            <div class="review-image">
+                <img src="/upload/fus/review/<%=reviewDTO.getFileName()%>"/>
+            </div>
+            <div class="review-content"><%=reviewDTO.getContent()%></div>
+        </div>
     </div>
     <%
             }
@@ -75,11 +94,11 @@
             <div style="background-color: #a6e1ec; width: 700px; margin: 0 auto;">
                 <div>
                     <%--                    value="${sessionMemberId}"--%>
-                    <input name="memberId" type="text" placeholder="memberId">
+                    <input name="memberId" type="text" value="<%=memberId%>" readonly>
                 </div>
                 <div>
                     <!--value="<%=productDTO.getProductName()%>"-->
-                    <input type="text" name="productName" placeholder="productId" readonly >
+                    <input type="text" name="productName" value="<%=productDTO.getProductId()%>" readonly >
                     <select name="rate">
                         <option value="5">5</option>
                         <option value="4">4</option>

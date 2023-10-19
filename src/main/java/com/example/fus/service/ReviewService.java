@@ -72,4 +72,15 @@ public class ReviewService {
         }
         return reviewDTOList;
     }
+    //리뷰를 삭제하기
+    public void removeReview(int index) throws Exception{
+        try{
+            log.info("indexiiiiii" + index);
+            reviewDAO.removeReview(index);
+
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            log.info("RemoveReview error");
+        }
+    }
 }
