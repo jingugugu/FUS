@@ -39,17 +39,34 @@ public class CartDAO {
 
     // 장바구니 추가
     public void insertCart(CartDTO cartDTO) throws SQLException {
-
-        String sql = "INSERT INTO cart (productId, memberId, productName, count, price, fileName, addDate) VALUES (?, ?, ?, ?, ?, ?, now())";
+        String memberId = cartDTO.getMemberId();
+        int productId = cartDTO.getProductId();
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        String sql = "SELECT count(*) AS 'count' FROM cart WHERE memberId = ? AND productId = ?";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, cartDTO.getProductId());
-        preparedStatement.setString(2, cartDTO.getMemberId());
-        preparedStatement.setString(3, cartDTO.getProductName());
-        preparedStatement.setInt(4, cartDTO.getCount());
-        preparedStatement.setInt(5, cartDTO.getPrice());
-        preparedStatement.setString(6, cartDTO.getFileName());
-        preparedStatement.executeUpdate();
+        preparedStatement.setString(1, cartDTO.getMemberId());
+        preparedStatement.setInt(2, cartDTO.getProductId());
+        ResultSet rs = preparedStatement.executeQuery();
+        if (rs.next()) {
+            int count = rs.getInt("count");
+            if (count > 0) {
+                sql = "update cart set count = count + 1 WHERE memberId = ? AND productId = ?";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, cartDTO.getMemberId());
+                preparedStatement.setInt(2, cartDTO.getProductId());
+                preparedStatement.executeUpdate();
+            } else {
+                sql = "INSERT INTO cart (productId, memberId, productName, count, price, fileName, addDate) VALUES (?, ?, ?, ?, ?, ?, now())";
+                preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setInt(1, cartDTO.getProductId());
+                preparedStatement.setString(2, cartDTO.getMemberId());
+                preparedStatement.setString(3, cartDTO.getProductName());
+                preparedStatement.setInt(4, cartDTO.getCount());
+                preparedStatement.setInt(5, cartDTO.getPrice());
+                preparedStatement.setString(6, cartDTO.getFileName());
+                preparedStatement.executeUpdate();
+            }
+        }
     }
 
     // 전부 삭제
@@ -70,6 +87,23 @@ public class CartDAO {
                 @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, memberId);
                 preparedStatement.setString(2, productId);
+                preparedStatement.executeUpdate();
+            } catch (SQLException e) {
+                log.info(e.getMessage());
+                log.info("체크삭제 cartDao 에러");
+            }
+        }
+    }
+
+    //주문완료 후 완료목록 삭제
+    public void orderFinish(String memberId, String[] productId) throws SQLException {
+        for (String productIds : productId) {
+            try {
+                String sql = "DELETE FROM cart WHERE memberId = ? AND productId = ?";
+                @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+                @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, memberId);
+                preparedStatement.setString(2, productIds);
                 preparedStatement.executeUpdate();
             } catch (SQLException e) {
                 log.info(e.getMessage());

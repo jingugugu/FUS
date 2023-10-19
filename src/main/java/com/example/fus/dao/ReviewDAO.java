@@ -43,6 +43,8 @@ public class ReviewDAO {
         List<ReviewDTO> reviewList = new ArrayList<>();
         while(resultSet.next()){
             ReviewDTO reviewDTO = new ReviewDTO();
+            reviewDTO.setIndex(resultSet.getInt("index"));
+            reviewDTO.setProductId(resultSet.getInt("productId"));
             reviewDTO.setProductName(resultSet.getString("productName"));
             reviewDTO.setMemberId(resultSet.getString("memberId"));
             reviewDTO.setRate(resultSet.getInt("rate"));
@@ -79,5 +81,15 @@ public class ReviewDAO {
             reviewDTOList.add(reviewDTO);
         }
         return reviewDTOList;
+    }
+//리뷰 삭제하는 sql
+    public void removeReview(int index) throws Exception{
+        String sql = "delete from review where `index`=?";
+
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setInt(1, index);
+        preparedStatement.executeUpdate();
     }
 }

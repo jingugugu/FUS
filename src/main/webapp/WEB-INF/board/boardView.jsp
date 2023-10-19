@@ -33,23 +33,23 @@
 
 <div class="container">
     <div class="form-group row">
-        <label class="col-sm-2 control-label">이름</label>
+        <label class="col-sm-2 control-label">User</label>
         <div class="col-sm-3">
             <%=board.getName()%>
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-2 control-label">제목</label>
+        <label class="col-sm-2 control-label">Title</label>
         <div class="col-sm-5">
             <%=board.getTitle()%>
         </div>
     </div>
 
     <div class="form-group row">
-        <label class="col-sm-2 control-label">내용</label>
-        <div class="col-sm-8" style="word-break: break-all;">
-            <img class="card-img-top" src="/upload/fus/board/<%=board.getFileName()%>">
+        <label class="col-sm-2 control-label">Content</label>
+        <div class="col-sm-8" style="word-break: break-all; height: 200px">
+            <img class="card-img-top" src="Users/ieunseo/Desktop/dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/upload/board<%=board.getFileName()%>">
             <%=board.getContent()%>
         </div>
     </div>
@@ -65,13 +65,17 @@
                 <input type="hidden" name="pageNum" value="<%=pageNum%>">
                 <input type="hidden" name="num" value="<%=board.getBoardNum()%>">
             </form>
-            <div class="board-btns">
-                <a class="purple-a" href="../board/all?pageNum=<%=pageNum%>">목록</a>
+            <div class="btns-wrap">
+                <span class="purple-btn-custom"><a href="../board/all?pageNum=<%=pageNum%>">목록</a></span>
             <%
             if( memberId.equals(board.getMemberId())){
             %>
+            <div class="btns-rm">
                 <span class="purple-btn btn-modify"> 수정 </span>
                 <span class="red-btn btn-remove"> 삭제 </span>
+            </div>
+
+
             <%
             }
             %>

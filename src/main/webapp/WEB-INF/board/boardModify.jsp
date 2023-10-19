@@ -25,27 +25,33 @@
 </div>
 
 <form id="ModifyFrm" action="/board/modify.do" method="post" enctype="multipart/form-data">
-
-    <div class="form-group">
-        <label class="control-label">제목
-            <input type="hidden" name="boardNum" value="<%=boardDTO.getBoardNum()%>">
-            <input type="text" name="title" class="form-control" minlength="5" maxlength="15" value="<%=boardDTO.getTitle()%>" readonly>
-        </label>
-    </div>
-
-    <div class="form-group ">
+    <input type="hidden" name="boardNum" value="<%=boardDTO.getBoardNum()%>">
+<!--제목-->
+    <div class="form-group-title1" align="center">
         <label class="control-label">
-            <textarea name="content" rows="45" cols="100" maxlength="1000" minlength="10" placeholder="내용을 입력하세요."><%=boardDTO.getContent()%></textarea>
+            <input type="text" name="title" class="text-title" minlength="5" maxlength="100" placeholder="제목" value="<%=boardDTO.getTitle()%>" readonly>
+            <!--파일-->
+            <div>
+                <label class="control-label"><input type="file" name="file"></label>
+            </div>
         </label>
     </div>
 
-    <div>
-        <label class="control-label"><input type="file" name="file"></label>
+    <!--내용-->
+    <div align="center">
+        <label class="control-label-content">
+            <textarea class="board-text" name="content" rows="45" cols="100" maxlength="1000" minlength="10" placeholder="내용을 입력하세요."><%=boardDTO.getContent()%></textarea>
+        </label>
     </div>
 
-    <label class="control-label">
-        <input type="submit" value="수정하기">
-    </label>
+
+
+    <div align="center">
+        <label class="control-label" >
+            <input type="submit" value="수정하기">
+        </label>
+    </div>
+
 
 </form>
 <jsp:include page="../layout/footer.jsp" flush="false" />
