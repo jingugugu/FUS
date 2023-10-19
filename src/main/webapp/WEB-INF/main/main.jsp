@@ -12,6 +12,9 @@
     nav.navbar.bootsnav.no-background.white ul.nav > li > a {
         color: white !important;
     }
+    .user-name {
+        color: #3b6cd7 !important
+    }
 </style>
   <jsp:include page="../layout/header.jsp?12234234" />
   <section id="home" class="home bg-black fix">

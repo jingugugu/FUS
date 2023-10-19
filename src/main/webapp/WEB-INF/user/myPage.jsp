@@ -5,7 +5,8 @@
 <head>
     <title>Title</title>
 </head>
-<script src="/assets/js/user/myPage.js"></script>
+<script src="/assets/js/user/myPage.js?"></script>
+<script src="https://kit.fontawesome.com/4ae8b5f015.js" crossorigin="anonymous"></script> <%-- 폰트어썸(아이콘 사이트) --%>
 <%
     UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
 
@@ -43,7 +44,7 @@
 
             <div class="user-shipping">
                 <h4 class="display-1">구매내역 목록</h4>
-                <table>
+                <table class="mypage-category-table">
                     <tr>
                         <th>상품번호</th>
                         <th>개수</th>
@@ -72,7 +73,7 @@
 
             <div class="user-review" style="display: none">
                 <h4 class="display-1">리뷰 목록</h4>
-                <table>
+                <table class="mypage-category-table">
                     <tr>
                         <th>상품명</th>
                         <th>별점</th>
@@ -96,7 +97,7 @@
                         </c:when>
                         <c:otherwise>
                             <tr>
-                                <td colspan="4" class="text-center"><p>작성한 게시글이 없습니다</p></td>
+                                <td colspan="4" class="text-center"><p>작성한 리뷰가 없습니다</p></td>
                             </tr>
                         </c:otherwise>
                     </c:choose>
@@ -105,7 +106,7 @@
 
             <div class="user-board" style="display: none">
                 <h4 class="display-1">게시글 목록</h4>
-                <table>
+                <table class="mypage-category-table">
                     <tr>
                         <th>구분</th>
                         <th>이름</th>
@@ -125,7 +126,7 @@
                         </c:when>
                         <c:otherwise>
                             <tr>
-                                <td colspan="4" class="text-center"><p>작성한 리뷰가 없습니다</p></td>
+                                <td colspan="4" class="text-center"><p>작성한 게시글이 없습니다</p></td>
                             </tr>
                         </c:otherwise>
                     </c:choose>
@@ -134,7 +135,7 @@
 
             <div class="user-ripple" style="display: none">
                 <h4 class="display-1">댓글 목록</h4>
-                <table>
+                <table class="mypage-category-table">
                     <tr>
                         <th>구분</th>
                         <th>이름</th>
@@ -160,7 +161,8 @@
                     </c:choose>
                 </table>
             </div>
-
+            <span class="mypage-category-toggle" data-state="on"><i class="fa-solid fa-arrow-down"></i> 전체 펼치기</span>
+            <span class="mypage-category-toggle" data-state="off" style="display: none"><i class="fa-solid fa-arrow-up"></i> 접기 </span>
         </div>
 
     </div>

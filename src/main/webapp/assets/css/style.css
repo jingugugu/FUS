@@ -1670,8 +1670,11 @@ tems Section style
     border-radius: 0.4em;
 }
 
-.white-btn:hover, .purple-btn:hover {
+.white-btn:hover {
     color: white !important;
+}
+.purple-btn:hover {
+    color: black !important;
 }
 
 .user-name {
@@ -1949,14 +1952,19 @@ tems Section style
     width: 7%;
     text-align: center;
 }
-
+/**/
 .board-date {
     width: 16%;
     text-align: center;
 }
 
 .board-title {
-    width: 70%;
+    width: 55%;
+    text-align: center;
+}
+
+.board-memberId {
+    width: 15%;
     text-align: center;
 }
 .board-container {
@@ -2073,4 +2081,19 @@ form[name=frmRipple] {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.mypage-category-table {
+    overflow: hidden;
+    height: 390px;
+}
+
+.mypage-category-toggle {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #6060dc;
 }

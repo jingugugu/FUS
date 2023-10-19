@@ -67,11 +67,11 @@ public class RippleDAO {
     }
 
     // 마이페이지 리플 5개 가져오기
-    public List<RippleDTO> selectMemberRipples5(String memberId) throws SQLException {
+    public List<RippleDTO> selectMemberRipples(String memberId) throws SQLException {
         @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
         List<RippleDTO> rippleDTOS = new ArrayList<>();
 
-        String sql = "SELECT * FROM ripple WHERE memberId = ? LIMIT 5";
+        String sql = "SELECT * FROM ripple WHERE memberId = ?";
         @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, memberId);
         @Cleanup ResultSet resultSet = preparedStatement.executeQuery();

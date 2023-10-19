@@ -59,11 +59,11 @@ public class ShippingService {
     }
 
     // 마이페이지 최근 구매내역 5개 가져오기
-    public List<ShippingDTO> selectMemberShippings5(HttpServletRequest req) {
+    public List<ShippingDTO> selectMemberShippings(HttpServletRequest req) {
         List<ShippingDTO> shippingDTOList = null;
         try {
             UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
-            shippingDTOList = shippingDAO.selectMemberShippings5(userDTO.getMemberId());
+            shippingDTOList = shippingDAO.selectMemberShippings(userDTO.getMemberId());
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("ShippingService : selectMemberShippings5 에러");

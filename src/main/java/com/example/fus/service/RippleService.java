@@ -61,11 +61,11 @@ public class RippleService {
         return rippleDAO.deleteRipple(rippleId);
     }
 
-    public List<RippleDTO> selectMemberRipples5(HttpServletRequest req) {
+    public List<RippleDTO> selectMemberRipples(HttpServletRequest req) {
         List<RippleDTO> rippleDTOList = null;
         try {
             UserDTO userDTO = (UserDTO) req.getSession().getAttribute("loginInfo");
-            rippleDTOList = rippleDAO.selectMemberRipples5(userDTO.getMemberId());
+            rippleDTOList = rippleDAO.selectMemberRipples(userDTO.getMemberId());
         } catch (SQLException e) {
             e.printStackTrace();
             log.error("BoardService : selectMemberBoards5 에러");
