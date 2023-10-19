@@ -67,9 +67,6 @@ dependencies {
 //    implementation 'org.glassfish.jersey.inject:jersey-hk2:2.40'
 //    implementation 'org.glassfish.jersey.media:jersey-media-json-jackson:2.40'
 
-    //사진 업로드
-    // https://mvnrepository.com/artifact/servlets.com/cos
-    implementation 'servlets.com:cos:05Nov2002'
 
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
