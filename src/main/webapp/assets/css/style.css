@@ -2093,7 +2093,6 @@ form[name=frmRipple] {
 .review-userId{
     background-color: yellow;
     border: solid 1px black;
-.product-order-wrap {
 }
 
 .white-btn:hover {
@@ -2113,9 +2112,54 @@ form[name=frmRipple] {
     font-size: 16px;
     font-weight: bold;
     color: #6060dc;
-.purple-btn:hover {
-    color: #6060dc !important;
 }
+
+    .purple-btn:hover {
+        color: #6060dc !important;
+    }
+
+    .order-button {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .review-remove {
+        text-align: right;
+    }
+
+    .review-productName {
+        background-color: #c0a16b;
+        border: solid 1px black;
+    }
+
+    .review-rate {
+        color: red;
+
+    }
+
+    .review-contents {
+        display: flex;
+    }
+
+    .review-image {
+        width: 200px;
+        height: 100px;
+    }
+
+    .review-content {
+        border: solid 1px black;
+        width: 100%;
+    }
+
+    .product-order-wrap {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 70vw;
+    }
 
 .shipping-info-wrap {
     display: flex;
@@ -2128,39 +2172,9 @@ form[name=frmRipple] {
     width: 70vw;
 }
 
-/*form[name=orderFrm] {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*}*/
-
-.order-button {
+form[name=orderFrm] {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.review-remove{
-    text-align: right;
-}
-.review-productName{
-    background-color: #c0a16b;
-    border: solid 1px black;
-}
-.review-rate{
-    color: red;
-
-}
-.review-contents{
-    display: flex;
-}
-.review-image{
-    width: 200px;
-    height: 100px;
-}
-.review-content{
-    border: solid 1px black;
-    width: 100%;
 }
