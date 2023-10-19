@@ -13,7 +13,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/main")
-//@MultipartConfig(location = "c:/upload") // 최대 파일 크기와 저장 위치를 지정
+//@MultipartConfig(location = "c:/upload") // 최대 파일 크기와 저장 위치를 지정11
 public class MainController extends HttpServlet {
 
     @Override
