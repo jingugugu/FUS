@@ -138,6 +138,7 @@ public class BoardService {
         return "게시글 업데이트 성공";
     }
 
+
     /*선택된 글 내용 수정하기
     * request로 넘어온 값을 BoardDTO 객체에 저장해서 DAO에 전달.*/
     public void modifyBoard(HttpServletRequest request){

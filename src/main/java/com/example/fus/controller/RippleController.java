@@ -66,7 +66,9 @@ public class RippleController extends HttpServlet {
 
             case "/get":
                 try {
+                    log.info("1");
                     List<RippleDTO> rippleDTOS = rippleService.getRipples(req);
+                    log.info("2");
                     //collection list를 json으로 변환.
                     JSONArray jsonArray = new JSONArray(); //목록을 저장해야 하기 때문에 JSONArray()를 사용
                     log.info(jsonArray);
@@ -80,7 +82,10 @@ public class RippleController extends HttpServlet {
                         jsonObject.put("isLogin", rippleDTO.isLogin());
                         jsonArray.add(jsonObject);
                     }
+                    log.info("3");
+                    log.info(jsonArray);
                     resp.getWriter().print(jsonArray.toJSONString());
+                    log.info("4");
                 } catch (Exception e){
                     throw  new RuntimeException(e);
                 }
