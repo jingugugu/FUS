@@ -2106,6 +2106,10 @@ form[name=frmRipple] {
     height: 240px;
 }
 
+.padding-left-sixteen {
+    padding-left: 16px !important;
+}
+
 /*   오더페이지 구역   */
 .shipping-container {
     display: flex;
@@ -2158,6 +2162,7 @@ form[name=frmRipple] {
 }
 
 .review-remove {
+.review-remove{
     text-align: right;
 }
 
