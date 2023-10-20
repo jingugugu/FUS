@@ -8,7 +8,7 @@
 <html lang="ko">
 <head>
     <title>Product Detail</title>
-    <script src="/assets/js/product/productView.js?aa2aaaa"></script>
+    <script src="/assets/js/product/productView.js?a2234234"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp?" flush="false" />
@@ -54,12 +54,15 @@
 
                 <div>
                     <button type="submit" class="purple-btn">장바구니 담기</button>
-                    <button type="button" class="white-btn">구매</button>
+                    <button type="button" id="shippingbtn" class="white-btn">구매</button>
                 </div>
             </form>
         </div>
     </div>
-    <hr>
+
+    <div class="review-wrap-title">상품평</div>
+
+    <div class="review-container">
     <%
         if(reviewList.size() > 0) {
             for(int j = 0; j < reviewList.size(); j++){
@@ -109,15 +112,15 @@
         }
     %>
 
-    <% if(memberId != null) { %>
+
         <div class="review-addFrm-wrap">
             <form name="frmRipple" action="/review/add" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="productId" value="<%=productDTO.getProductId()%>"><!-- 제품키 -->
                 <div class="review-add-input-wrap">
                     <div>
-                        <%--                    value="${sessionMemberId}"--%>
-                        <input type="hidden" name="memberId"  value="<%=memberId%>" readonly>
+                        <input type="hidden" id="pr_memberId" name="memberId" value="<%=memberId%>">
                     </div>
+                    <% if(memberId != null) { %>
                     <div>
                         <!--value="<%=productDTO.getProductName()%>"-->
                         <input type="hidden" name="productName" value="<%=productDTO.getProductName()%>" readonly >
@@ -145,10 +148,11 @@
                         <input type="file" name="file">
                         <input type="submit" value="등록">
                     </div>
+                    <% } %>
                 </div>
             </form>
         </div>
-    <% } %>
+    </div>
 </div>
 
 <jsp:include page="../layout/footer.jsp" flush="false" />

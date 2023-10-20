@@ -2153,10 +2153,11 @@ form[name=frmRipple] {
 .review-addFrm-wrap {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     width: 60vw;
 }
+
 
 .review-add-input-wrap {
     padding: 10px;

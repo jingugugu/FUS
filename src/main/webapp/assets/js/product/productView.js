@@ -55,20 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    const rating_input = document.querySelector('.rating input');
-    const rating_star = document.querySelector('.rating_star');
-
-    // 별점 드래그 할 때
-    rating_input.addEventListener('input', () => {
-        rating_star.style.width = `${rating_input.value * 20}%`;
-    });
-
     const shipping = document.getElementById("shippingbtn");
     const checkId = document.querySelector("input[name=productId]");
     const count = document.querySelector("input[name=count]");
-    const memberId = document.querySelector("input[name=memberId]");
+    const memberId = document.querySelector("#pr_memberId");
+
     shipping.addEventListener('click', function() {
-        console.log(memberId.value === "null");
+        // console.log(memberId);
         if (memberId.value === "null") {
             console.log(memberId.value);
             alert("로그인 해주세요");
@@ -77,19 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
             self.location.href = "/cart/selectOrder?orderId=" + checkId.value + "&count=" + count.value;
         }
     });
-    // productImg.addEventListener("mouseenter", zoomIn);
-    // productImg.addEventListener("mouseleave", zoomOut);
-    //
-    // function zoomIn(event) {
-    //     event.target.style.transform = "scale(1.2)"; //1.2배 확대
-    //     event.target.style.zIndex = 1;
-    //     event.target.style.transition = "all 0.5s";// 속도
-    // }
-    //
-    // function zoomOut(event) {
-    //     event.target.style.transform = "scale(1)";
-    //     event.target.style.zIndex = 0;
-    //     event.target.style.transition = "all 0.5s";
-    // }
+
+    const rating_input = document.querySelector('.rating input');
+    const rating_star = document.querySelector('.rating_star');
+
+    // 별점 드래그 할 때
+    rating_input.addEventListener('input', () => {
+        rating_star.style.width = `${rating_input.value * 20}%`;
+    });
 })
 
