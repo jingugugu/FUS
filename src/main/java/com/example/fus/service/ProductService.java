@@ -191,4 +191,13 @@ public class ProductService {
             e.printStackTrace();
         }
     }
+
+    // 주문 완료시 주문 카운트 올려주는 메소드
+    public void orderCountUp(int productId) {
+        try {
+            productDAO.orderCountUp(productId);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

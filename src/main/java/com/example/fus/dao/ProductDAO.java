@@ -262,4 +262,13 @@ public class ProductDAO {
 
         return preparedStatement.executeUpdate();
     }
+    // 상품 주문 시 주문 수 올리는 메소드
+    public Integer orderCountUp(int productId) throws SQLException{
+        @Cleanup Connection connection = ConnectionUtil.INSTANCE.getConnection();
+        String sql = "UPDATE product SET orderCount = orderCount + 1 WHERE productId = ?";
+        @Cleanup PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, productId);
+
+        return preparedStatement.executeUpdate();
+    }
 }

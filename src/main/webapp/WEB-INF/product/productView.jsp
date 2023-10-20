@@ -8,7 +8,7 @@
 <html lang="ko">
 <head>
     <title>Product Detail</title>
-    <script src="/assets/js/product/productView.js?a2234234"></script>
+    <script src="/assets/js/product/productView.js?aa2aaaa"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp?" flush="false" />

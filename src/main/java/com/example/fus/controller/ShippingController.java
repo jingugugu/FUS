@@ -1,6 +1,7 @@
 package com.example.fus.controller;
 
 import com.example.fus.service.CartService;
+import com.example.fus.service.ProductService;
 import com.example.fus.service.ShippingService;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,6 +18,7 @@ public class ShippingController extends HttpServlet {
     private String path;
     private ShippingService shippingService = null;
     private CartService cartService = null;
+    private ProductService productService = null;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,6 +41,7 @@ public class ShippingController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         shippingService = new ShippingService();
         cartService = new CartService();
+        productService = new ProductService();
         path = req.getPathInfo();
 
         if (path == null) {
@@ -49,6 +52,9 @@ public class ShippingController extends HttpServlet {
                 case "/order":
                     log.info("shipping order!!");
                     String[] productIds = req.getParameterValues("productId");
+                    for(String productId : productIds) {
+                        productService.orderCountUp(Integer.parseInt(productId));
+                    }
                     shippingService.addShipping(req);
                     cartService.orderFinish(req, productIds); // productId를 가진 배열
                     resp.sendRedirect("/shipping/complete");
