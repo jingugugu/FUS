@@ -55,19 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    // productImg.addEventListener("mouseenter", zoomIn);
-    // productImg.addEventListener("mouseleave", zoomOut);
-    //
-    // function zoomIn(event) {
-    //     event.target.style.transform = "scale(1.2)"; //1.2배 확대
-    //     event.target.style.zIndex = 1;
-    //     event.target.style.transition = "all 0.5s";// 속도
-    // }
-    //
-    // function zoomOut(event) {
-    //     event.target.style.transform = "scale(1)";
-    //     event.target.style.zIndex = 0;
-    //     event.target.style.transition = "all 0.5s";
-    // }
+    const rating_input = document.querySelector('.rating input');
+    const rating_star = document.querySelector('.rating_star');
+
+    // 별점 드래그 할 때
+    rating_input.addEventListener('input', () => {
+        rating_star.style.width = `${rating_input.value * 20}%`;
+    });
+
 })
 

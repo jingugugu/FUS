@@ -18,11 +18,11 @@
     </div>
 </div>
 
-<div class="form-group row">
-    <div class="col-sm-10">
-        <a href="/main" class="btn btn-secondary" role="button">Home</a>
-    </div>
-</div>
+
+<dic class="continue">
+    <a href="/product/list?pageNum=1&category=ALL" class="btn btn-secondary" style="margin-right: 30px"> &laquo; 쇼핑 계속하기</a>
+    <a href="/main" class="btn btn-secondary"> &laquo; 메인으로 돌아가기</a>
+</dic>
 <jsp:include page="../layout/footer.jsp?12" />
 </body>
 </html>

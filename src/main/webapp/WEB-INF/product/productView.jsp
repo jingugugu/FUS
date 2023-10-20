@@ -3,11 +3,12 @@
 <%@ page import="com.example.fus.dto.ReviewDTO" %>
 <%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html lang="ko">
 <head>
     <title>Product Detail</title>
-    <script src="/assets/js/product/productView.js"></script>
+    <script src="/assets/js/product/productView.js?a"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp?" flush="false" />
@@ -58,66 +59,100 @@
             </form>
         </div>
     </div>
-    <hr>
+
+    <div class="review-wrap-title">상품평</div>
+
+    <div class="review-view-wrap">
     <%
         if(reviewList.size() > 0) {
             for(int j = 0; j < reviewList.size(); j++){
                 ReviewDTO reviewDTO = (ReviewDTO) reviewList.get(j);
     %>
-    <div class="user-review">
-        <div class="review-userController">
-            <div class="review-userId"><%=memberId%></div>
-            <div class="review-productName"><%=reviewDTO.getProductName()%></div>
-            <div class="review-remove"><a href="/review/remove?index=<%=reviewDTO.getIndex()%>&productId=<%=reviewDTO.getProductId()%>">삭제</a></div>
-        </div>
-        <div class="review-title"><%=reviewDTO.getTitle()%></div>
-        <td class="review-rate">
-            <c:forEach begin="1" end="<%=reviewDTO.getRate()%>">
-                ★
-            </c:forEach>
-        </td>
-        <div class="review-addDate"><%=reviewDTO.getAddDate()%></div>
-        <div class="review-contents">
-            <div class="review-image">
-                <img src="/upload/fus/review/<%=reviewDTO.getFileName()%>"/>
+        <div class="user-review1">
+            <div class="review-userController">
+
+                <div class="review-userId">
+                    <span><%=reviewDTO.getMemberId().substring(0, 4)+"****"%>
+                    <%
+                        if( memberId != null && memberId.equals(reviewDTO.getMemberId())){
+                    %>
+                        <a href="/review/remove?index=<%=reviewDTO.getIndex()%>&productId=<%=reviewDTO.getProductId()%>">삭제</a>
+                    <%
+                        }
+                    %>
+                    </span>
+                </div>
+                <div class="review-rate-date">
+                    <span class="rate-date-wrap">
+                        <span class="review-rate">
+                        <c:forEach begin="1" end="<%=reviewDTO.getRate()%>">
+                            ★
+                        </c:forEach>
+                        </span>
+                        <%=reviewDTO.getAddDate().split(" ")[0]%>
+                    </span>
+                </div>
+                <div class="review-title">
+                    <%=reviewDTO.getTitle()%>
+                </div>
+                <div class="review-contents">
+                    <c:if test="<%=reviewDTO.getFileName() != null && reviewDTO.getFileName().length() > 0 %>">
+                        <div class="review-image">
+                            <img src="/upload/fus/review/<%=reviewDTO.getFileName()%>"/>
+                        </div>
+                    </c:if>
+                    <div class="review-content">
+                        <%=reviewDTO.getContent()%>
+                    </div>
+                </div>
             </div>
-            <div class="review-content"><%=reviewDTO.getContent()%></div>
         </div>
-    </div>
     <%
             }
         }
     %>
-
-    <div>
-        <form name="frmRipple" action="/review/add" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="productId" value="<%=productDTO.getProductId()%>"><!-- 제품키 -->
-            <div style="background-color: #a6e1ec; width: 700px; margin: 0 auto;">
-                <div>
-                    <%--                    value="${sessionMemberId}"--%>
-                    <input name="memberId" type="text" value="<%=memberId%>" readonly>
-                </div>
-                <div>
-                    <!--value="<%=productDTO.getProductName()%>"-->
-                    <input type="text" name="productName" value="<%=productDTO.getProductId()%>" readonly >
-                    <select name="rate">
-                        <option value="5">5</option>
-                        <option value="4">4</option>
-                        <option value="3">3</option>
-                        <option value="2">2</option>
-                        <option value="1">1</option>
-                    </select>
-                </div>
-                <div>
-                    <input type="text" name="title" placeholder="제목">
-                </div>
-                <textarea name="content" style="width: 700px; height: 200px"></textarea>
-                <input type="file" name="file">
-                <input type="submit" value="등록">
-            </div>
-        </form>
     </div>
 
+    <% if(memberId != null) { %>
+        <div class="review-addFrm-wrap">
+            <form name="frmRipple" action="/review/add" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="productId" value="<%=productDTO.getProductId()%>"><!-- 제품키 -->
+                <div class="review-add-input-wrap">
+                    <div>
+                        <%--                    value="${sessionMemberId}"--%>
+                        <input type="hidden" name="memberId"  value="<%=memberId%>" readonly>
+                    </div>
+                    <div>
+                        <!--value="<%=productDTO.getProductName()%>"-->
+                        <input type="hidden" name="productName" value="<%=productDTO.getProductId()%>" readonly >
+
+                    </div>
+                    <div class="rate-form-wrap">
+                        <input type="text" name="title" id="rateFrmTitle" placeholder="제목" maxlength="50" minlength="5">
+                        <div class="rating_box">
+                            <div class="rating">
+                                ★★★★★
+                                <span class="rating_star">★★★★★</span>
+                                <input type="range" name="rate" value="1" step="1" min="1" max="5">
+                            </div>
+                        </div>
+    <%--                    <select name="rate" class="review-form-rate">--%>
+    <%--                        <option value="5">★★★★★</option>--%>
+    <%--                        <option value="4">★★★★</option>--%>
+    <%--                        <option value="3">★★★</option>--%>
+    <%--                        <option value="2">★★</option>--%>
+    <%--                        <option value="1">★</option>--%>
+    <%--                    </select>--%>
+                    </div>
+                    <textarea name="content" style="width: 700px; height: 200px" maxlength="300" minlength="5"></textarea>
+                    <div id="review-btns-wrap">
+                        <input type="file" name="file">
+                        <input type="submit" value="등록">
+                    </div>
+                </div>
+            </form>
+        </div>
+    <% } %>
 </div>
 
 <jsp:include page="../layout/footer.jsp" flush="false" />

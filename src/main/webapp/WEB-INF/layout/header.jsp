@@ -22,10 +22,10 @@
 
 
   <!--For Plugins external css-->
-  <link rel="stylesheet" href="/assets/css/plugins.css?a" />
+  <link rel="stylesheet" href="/assets/css/plugins.css?32a" />
 
   <!--Theme custom css -->
-  <link rel="stylesheet" href="/assets/css/style.css?bb23">
+  <link rel="stylesheet" href="/assets/css/style.css?ad22232">
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="/assets/css/responsive.css" />

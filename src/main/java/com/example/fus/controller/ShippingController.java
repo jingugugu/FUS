@@ -49,8 +49,8 @@ public class ShippingController extends HttpServlet {
                 case "/order":
                     log.info("shipping order!!");
                     String[] productIds = req.getParameterValues("productId");
-                    cartService.orderFinish(req, productIds); // productId를 가진 배열
                     shippingService.addShipping(req);
+                    cartService.orderFinish(req, productIds); // productId를 가진 배열
                     resp.sendRedirect("/shipping/complete");
                     break;
             }

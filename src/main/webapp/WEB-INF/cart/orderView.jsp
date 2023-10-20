@@ -74,7 +74,7 @@
             <td>₩<%=cartDTO.getPrice()%>원</td>
             <td>
               <input type="text" name="count" value="<%=cartDTO.getCount()%>">
-              <input type="hidden" name="productId" value="<%=cartDTO.getProductId()%>">
+<%--              <input type="hidden" name="productId" value="<%=cartDTO.getProductId()%>">--%>
               <input type="hidden" name="productName" value="<%=cartDTO.getProductName()%>">
             </td>
             <td>₩<%=sum%>원</td>

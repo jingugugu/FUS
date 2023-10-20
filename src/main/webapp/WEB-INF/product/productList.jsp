@@ -105,7 +105,7 @@
 
 <div class="wrapper2">
 
-    <h3 class="products-title">Just Dropped</h3>
+    <h3 class="products-title">New items</h3>
     <div class="flex-test">
         <c:forEach var="newProduct" items="${newProducts}">
             <div class="product-list-wrap">

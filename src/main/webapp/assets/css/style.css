@@ -1602,7 +1602,7 @@ tems Section style
 
 .main_footer i {
     padding: 0px 5px;
-    color: #ff0000;
+    color: gray;
 }
 
 .margin-block {
@@ -2063,7 +2063,9 @@ tems Section style
 }
 
 form[name=frmRipple] {
-    width: 60vw;
+    display: flex;
+    width: 80%;
+    justify-content: start;
 }
 
 .ripple-form-name {
@@ -2093,6 +2095,17 @@ form[name=frmRipple] {
 .product-description {
     color: #bdbdbd;
 }
+
+#product-image {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.review-image {
+    max-height: 150px;
+    max-width: 150px;
+}
+
 .product-price {
     font-size: 20px;
 }
@@ -2118,17 +2131,113 @@ form[name=frmRipple] {
 }
 /*리뷰 */
 
-.user-review {
-    height: 250px;
-    background-color: #4cae4c;
+.review-wrap-title {
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 60px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     color: black;
-    border: solid 1px black;
-    margin-bottom: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    margin-bottom: 50px;
 }
 
-.review-userId {
-    background-color: yellow;
-    border: solid 1px black;
+.review-form-rate {
+    width: 100px;
+    color: red;
+}
+
+.review-addFrm-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 60vw;
+}
+
+.review-add-input-wrap {
+    padding: 10px;
+    width: 80%;
+    color: black;
+    /*border-bottom: solid 1px rgba(0, 0, 0, 0.2);*/
+    margin: 10px 0;
+}
+
+/* 리뷰 별점 슬라이드 기능 관련 CSS */
+.rate-form-wrap {
+    display: flex;
+    width: 720px;
+    line-height: 25px;
+    margin-bottom: 10px;
+}
+
+#rateFrmTitle {
+    width: 80%;
+    height: 30px;
+    margin-right: 20px;
+}
+
+#review-btns-wrap {
+    display: flex;
+    width: 700px;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.rating_box {
+    display: flex;
+}
+
+.rating {
+    position: relative;
+    color: #ddd;
+    font-size: 20px;
+    text-align: center;
+}
+
+.rating input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.rating_star {
+    width: 0;
+    color: #ff0707;
+    position: absolute;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+.user-review1 {
+    padding: 10px;
+    width: 80%;
+    color: black;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+.review-dc {
+    display: inline-block;
+    width: 90px;
+}
+
+.review-view-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vw;
+    justify-content: center;
 }
 
 .white-btn:hover {
@@ -2161,7 +2270,12 @@ form[name=frmRipple] {
     align-items: center;
 }
 
-.review-remove {
+.review-title {
+    padding: 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .review-remove{
     text-align: right;
 }
@@ -2173,20 +2287,26 @@ form[name=frmRipple] {
 
 .review-rate {
     color: red;
-
+    letter-spacing: -3px;
+    margin-right: 10px;
 }
 
-.review-contents {
+.review-rate-date {
     display: flex;
 }
 
 .review-image {
-    width: 200px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
+}
+
+.review-contents {
+    margin-top: 30px;
 }
 
 .review-content {
-    border: solid 1px black;
+    margin-top: 20px;
+    padding: 5px;
     width: 100%;
 }
 

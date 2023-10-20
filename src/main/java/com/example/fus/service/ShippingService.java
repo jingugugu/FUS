@@ -26,12 +26,14 @@ public class ShippingService {
             HttpSession session = request.getSession();
             UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
             String memberId = userDTO.getMemberId();
-            String[] productIds = request.getParameterValues("productId");
-            String[] productNames = request.getParameterValues("productName");
-            String[] counts = request.getParameterValues("count");
-            for(String productId : productIds) {
-                log.info(productId);
-            }
+            String[] productIds = request.getParameterValues("productId"); // 3
+            String[] productNames = request.getParameterValues("productName"); // 3
+            String[] counts = request.getParameterValues("count"); // 3
+
+            log.info(productIds.length);
+            log.info(productNames.length);
+            log.info(counts.length);
+
             log.info(productNames[0]);
             log.info(counts[0]);
             log.info(request.getParameter("receiverName"));
