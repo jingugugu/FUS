@@ -55,6 +55,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    const shipping = document.getElementById("shippingbtn");
+    const checkId = document.querySelector("input[name=productId]");
+    const count = document.querySelector("input[name=count]");
+    const memberId = document.querySelector("input[name=memberId]");
+    shipping.addEventListener('click', function() {
+        console.log(memberId.value === "null");
+        if (memberId.value === "null") {
+            console.log(memberId.value);
+            alert("로그인 해주세요");
+        }
+        else {
+            self.location.href = "/cart/selectOrder?orderId=" + checkId.value + "&count=" + count.value;
+        }
+    });
     // productImg.addEventListener("mouseenter", zoomIn);
     // productImg.addEventListener("mouseleave", zoomOut);
     //

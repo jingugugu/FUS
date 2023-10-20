@@ -16,7 +16,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/board/*")
-@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="/Users/ieunseo/Desktop/dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/upload" )
+@MultipartConfig(maxFileSize = 2 * 1024 * 1024, location ="c:/upload/fus/board" )
 public class BoardController extends HttpServlet {
     private BoardService boardService = null;
     private String path = null;

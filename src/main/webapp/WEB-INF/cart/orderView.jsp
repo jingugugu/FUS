@@ -1,6 +1,8 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page import="com.example.fus.dto.CartDTO" %>
+<%@ page import="com.example.fus.dto.ProductDTO" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,8 +18,25 @@
 <body>
 <jsp:include page="../layout/header.jsp" flush="false" />
 <%
-  List cartDTOList = (List) request.getAttribute("cartDTOList"); // null, 정보가 들어있거나
+  List cartDTOList = new ArrayList<>();
+  if(request.getAttribute("cartDTOList") != null) {
+    cartDTOList = (List) request.getAttribute("cartDTOList"); // null, 정보가 들어있거나
+  }
+  ProductDTO productDTO = (ProductDTO) request.getAttribute("cartDTO");
   UserDTO userDTO = (UserDTO) session.getAttribute("loginInfo");
+
+
+  if(request.getParameter("count") != null) {
+    CartDTO cartDTO = new CartDTO();
+    cartDTO.setCount(Integer.parseInt(request.getParameter("count")));
+    cartDTO.setFileName(productDTO.getFileName());
+    cartDTO.setProductId(productDTO.getProductId());
+    cartDTO.setProductName(productDTO.getProductName());
+    cartDTO.setPrice(productDTO.getPrice());
+    cartDTO.setMemberId(userDTO.getMemberId());
+    cartDTOList.add(cartDTO);
+  }
+
 %>
 <div class="margin-block"></div>
 

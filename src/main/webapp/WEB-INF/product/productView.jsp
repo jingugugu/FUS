@@ -7,12 +7,13 @@
 <html lang="ko">
 <head>
     <title>Product Detail</title>
-    <script src="/assets/js/product/productView.js"></script>
+    <script src="/assets/js/product/productView.js?aa2aaaa"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp?" flush="false" />
 <%
     ProductDTO productDTO = (ProductDTO) request.getAttribute("product");
+//    request.setAttribute("productDTO", productDTO);
     List reviewList = (List) request.getAttribute("reviewList");
 
     String memberId = null;
@@ -33,7 +34,7 @@
         </div>
 
         <div class="product-info-wrap">
-            <form action="/cart/add" method="post">
+            <form action="/cart/" method="post">
                 <input type="hidden" name="productId" value="<%=productDTO.getProductId()%>">
                 <input type="hidden" name="fileName" value="<%=productDTO.getFileName()%>">
                 <div><span>상품명</span><p><%=productDTO.getProductName()%></p></div>
@@ -53,7 +54,7 @@
 
                 <div>
                     <button type="submit" class="purple-btn">장바구니 담기</button>
-                    <button type="button" class="white-btn">구매</button>
+                    <button type="button" id="shippingbtn" class="white-btn">구매</button>
                 </div>
             </form>
         </div>
@@ -95,7 +96,7 @@
             <div style="background-color: #a6e1ec; width: 700px; margin: 0 auto;">
                 <div>
                     <%--                    value="${sessionMemberId}"--%>
-                    <input name="memberId" type="text" value="<%=memberId%>" readonly>
+                    <input name="memberId" type="text" value="<%=memberId%>">
                 </div>
                 <div>
                     <!--value="<%=productDTO.getProductName()%>"-->
