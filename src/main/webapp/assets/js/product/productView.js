@@ -63,5 +63,33 @@ document.addEventListener("DOMContentLoaded", function () {
         rating_star.style.width = `${rating_input.value * 20}%`;
     });
 
+    const shipping = document.getElementById("shippingbtn");
+    const checkId = document.querySelector("input[name=productId]");
+    const count = document.querySelector("input[name=count]");
+    const memberId = document.querySelector("input[name=memberId]");
+    shipping.addEventListener('click', function() {
+        console.log(memberId.value === "null");
+        if (memberId.value === "null") {
+            console.log(memberId.value);
+            alert("로그인 해주세요");
+        }
+        else {
+            self.location.href = "/cart/selectOrder?orderId=" + checkId.value + "&count=" + count.value;
+        }
+    });
+    // productImg.addEventListener("mouseenter", zoomIn);
+    // productImg.addEventListener("mouseleave", zoomOut);
+    //
+    // function zoomIn(event) {
+    //     event.target.style.transform = "scale(1.2)"; //1.2배 확대
+    //     event.target.style.zIndex = 1;
+    //     event.target.style.transition = "all 0.5s";// 속도
+    // }
+    //
+    // function zoomOut(event) {
+    //     event.target.style.transform = "scale(1)";
+    //     event.target.style.zIndex = 0;
+    //     event.target.style.transition = "all 0.5s";
+    // }
 })
 

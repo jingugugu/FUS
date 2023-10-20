@@ -8,7 +8,7 @@
 <html lang="ko">
 <head>
     <title>Product Detail</title>
-    <script src="/assets/js/product/productView.js?a"></script>
+    <script src="/assets/js/product/productView.js?aa2aaaa"></script>
 </head>
 <body>
 <jsp:include page="../layout/header.jsp?" flush="false" />
@@ -59,10 +59,7 @@
             </form>
         </div>
     </div>
-
-    <div class="review-wrap-title">상품평</div>
-
-    <div class="review-view-wrap">
+    <hr>
     <%
         if(reviewList.size() > 0) {
             for(int j = 0; j < reviewList.size(); j++){
@@ -111,7 +108,6 @@
             }
         }
     %>
-    </div>
 
     <% if(memberId != null) { %>
         <div class="review-addFrm-wrap">
@@ -124,7 +120,7 @@
                     </div>
                     <div>
                         <!--value="<%=productDTO.getProductName()%>"-->
-                        <input type="hidden" name="productName" value="<%=productDTO.getProductId()%>" readonly >
+                        <input type="hidden" name="productName" value="<%=productDTO.getProductName()%>" readonly >
 
                     </div>
                     <div class="rate-form-wrap">

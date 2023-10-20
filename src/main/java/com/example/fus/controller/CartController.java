@@ -19,6 +19,7 @@ import java.util.List;
 public class CartController extends HttpServlet {
     private String path = null;
     private CartService cartService = null;
+    private ProductService productService = null;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,7 +43,7 @@ public class CartController extends HttpServlet {
                 break;
             case "/add":
                 int productId = Integer.parseInt(req.getParameter("productId")); // 아이디 값을 받아와서
-                ProductService productService = new ProductService();
+                productService = new ProductService();
                 ProductDTO productDTO = productService.getProduct(productId); // 해당 아이디의 상품정보를 가져옴
                 String count = req.getParameter("count");
                 String test1 = req.getParameter("productId");
@@ -77,8 +78,21 @@ public class CartController extends HttpServlet {
                 req.getRequestDispatcher("/WEB-INF/cart/orderView.jsp").forward(req, resp);
                 break;
             case "/selectOrder":
-                checkIds = req.getParameterValues("checkId");
-                log.info(checkIds);
+                String orderId = null;
+                count = req.getParameter("count");
+                if(req.getParameter("orderId") != null) {
+                    orderId = req.getParameter("orderId");
+                    log.info(orderId);
+                    productService = new ProductService();
+                    ProductDTO productDTO1 = productService.getProduct(Integer.parseInt(orderId));
+                    log.info(productDTO1);
+                    req.setAttribute("cartDTO", productDTO1);
+                    req.getRequestDispatcher("/WEB-INF/cart/orderView.jsp").forward(req, resp);
+//                    resp.sendRedirect("/cart/order?count="+count);
+                    break;
+                } else {
+                    checkIds = req.getParameterValues("checkId");
+                    log.info(checkIds);
                     for (String id : checkIds) {
                         log.info(id);
                     }
@@ -87,6 +101,7 @@ public class CartController extends HttpServlet {
                     req.setAttribute("cartDTOList", carts);
                     req.getRequestDispatcher("/WEB-INF/cart/orderView.jsp").forward(req, resp);
                     break;
+                }
             case "/orderFinish":
                 req.getRequestDispatcher("/WEB-INF/cart/orderFinish.jsp").forward(req, resp);
         }
