@@ -25,7 +25,7 @@
   <link rel="stylesheet" href="/assets/css/plugins.css?32a" />
 
   <!--Theme custom css -->
-  <link rel="stylesheet" href="/assets/css/style.css?">
+  <link rel="stylesheet" href="/assets/css/style.css?a2">
 
   <!--Theme Responsive css-->
   <link rel="stylesheet" href="/assets/css/responsive.css" />

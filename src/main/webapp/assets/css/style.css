@@ -1743,6 +1743,21 @@ tems Section style
     flex-wrap: wrap;
 }
 
+.flex-board {
+    display: flex;
+    margin: 10px 0;
+}
+
+.flex-board-span {
+    width: 70px;
+    font-weight: bold;
+}
+
+.card-img-top {
+    max-width: 250px;
+    max-height: 250px;
+}
+
 .wrapper2 {
     flex-wrap: wrap;
     display: flex;
@@ -2056,6 +2071,7 @@ tems Section style
 }
 
 .write-ripple-area {
+    margin-top: 30px;
     padding: 3px;
     display: flex;
     width: 60vw;
@@ -2064,7 +2080,6 @@ tems Section style
 
 form[name=frmRipple] {
     display: flex;
-    width: 80%;
     justify-content: start;
 }
 
@@ -2093,6 +2108,7 @@ form[name=frmRipple] {
     font-size: 20px;
 }
 .product-description {
+    height: 50px;
     color: #bdbdbd;
 }
 

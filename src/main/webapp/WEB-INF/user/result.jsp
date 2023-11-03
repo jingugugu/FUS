@@ -24,6 +24,20 @@
         </div>
       </div>
 
+    <c:if test="<%=resultNum != 2%>">
+        <div class="main-container" style="visibility: hidden">
+            <h3 class="display-3" style="text-align: center">비밀번호 재설정</h3>
+            <div class="container">
+                <form action="/user/resetPassword" method="post">
+                    <label class="control-label">ID  <input type="text" name="memberId" class="form-control" value="<%=session.getAttribute("memberId")%>" readonly></label>
+                    <label class="control-label">PW  <input type="password" name="passwd" class="form-control"></label>
+                    <label class="control-label">PW 재확인 <input type="password" class="form-control"></label>
+                    <input class="btn btn-primary" type="submit" value="재설정">
+                </form>
+            </div>
+        </div>
+    </c:if>
+
     <c:if test="<%=resultNum == 2%>">
         <div class="main-container">
             <h3 class="display-3" style="text-align: center">비밀번호 재설정</h3>
@@ -38,9 +52,11 @@
         </div>
     </c:if>
 
+    <c:if test="<%=resultNum != 2%>">
     <div class="container">
         <a href="/main">메인으로 돌아가기</a>
     </div>
+    </c:if>
 
     <jsp:include page="../layout/footer.jsp" flush="false" />
 </body>

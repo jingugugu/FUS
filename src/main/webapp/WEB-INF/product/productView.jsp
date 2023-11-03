@@ -49,7 +49,7 @@
                 <div><span>가격</span><p><fmt:formatNumber type="number" maxFractionDigits="3" value="<%=productDTO.getPrice()%>" /></p></div>
                 <hr>
 
-                <div><span>수량</span><p><input type="number" name="count" value="1"> </p></div>
+                <div><span>수량</span><p><input type="number" name="count" value="1" min="1"> </p></div>
                 <hr>
 
                 <div>

@@ -142,12 +142,15 @@
       location.href="/cart/allOrder"
     })
 
-    const oneRemoveBtn = document.querySelector(".btn-removeById");
-    oneRemoveBtn.addEventListener("click", function () {
-      if (confirm('정말 삭제 하시겠습니까?')) {
-        location.href="/cart/oneRemove?productId=<%=cartDTO.getProductId()%>"
-      }
+    const oneRemoveBtn = document.querySelectorAll(".btn-removeById");
+    oneRemoveBtn.forEach(object => {
+      object.addEventListener("click", function () {
+        if (confirm('정말 삭제 하시겠습니까?')) {
+          location.href="/cart/oneRemove?productId="+object.role;
+        }
+      })
     })
+
 
     const ckeckOrderBtn = document.querySelector(".btn-success2");
     ckeckOrderBtn.addEventListener("click", function (){

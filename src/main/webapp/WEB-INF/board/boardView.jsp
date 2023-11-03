@@ -32,53 +32,62 @@
 </div>
 
 <div class="container">
-    <div class="form-group row">
-        <label class="col-sm-2 control-label">User</label>
-        <div class="col-sm-3">
-            <%=board.getName()%>
-        </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-2 control-label">Title</label>
-        <div class="col-sm-5">
-            <%=board.getTitle()%>
-        </div>
+    <div class="flex-board">
+        <span class="flex-board-span">User</span>
+        <div><%=board.getName()%></div>
     </div>
+    <hr>
 
-    <div class="form-group row">
-        <label class="col-sm-2 control-label">Content</label>
-        <div class="col-sm-8" style="word-break: break-all; height: 200px">
-            <img class="card-img-top" src="Users/ieunseo/Desktop/dev/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/webapps/upload<%=board.getFileName()%>">
+    <div class="flex-board">
+        <span class="flex-board-span">Title</span>
+        <div><%=board.getTitle()%></div>
+    </div>
+    <hr>
+
+    <div class="flex-board">
+        <span class="flex-board-span">Content</span>
+        <div>
+            <% if(!(board.getFileName().equals("")) ) { %>
+                <img class="card-img-top" src="/upload/fus/board/<%=board.getFileName()%>"><br>
+            <% } %>
             <%=board.getContent()%>
         </div>
     </div>
-
+    <hr>
 
     <form name="frmRippleView" method="post">
         <input type="hidden" name="num" value="<%=board.getBoardNum()%>">
     </form>
 
     <div class="form-group row">
-        <div class="col-sm-offset-2 col-sm-10">
+        <div class="col-sm-offset-2 col-sm-10" style="margin-left: 0px">
             <form name="frmView" method="post">
                 <input type="hidden" name="pageNum" value="<%=pageNum%>">
                 <input type="hidden" name="num" value="<%=board.getBoardNum()%>">
             </form>
             <div class="btns-wrap">
                 <span class="purple-btn-custom"><a href="../board/all?pageNum=<%=pageNum%>">목록</a></span>
-            <%
-            if( memberId.equals(board.getMemberId())){
-            %>
-            <div class="btns-rm">
-                <span class="purple-btn btn-modify"> 수정 </span>
-                <span class="red-btn btn-remove"> 삭제 </span>
-            </div>
+                <%
+                    if( memberId.equals(board.getMemberId())){
+                %>
+                <div class="btns-rm">
+                    <span class="purple-btn btn-modify"> 수정 </span>
+                    <span class="red-btn btn-remove"> 삭제 </span>
+                </div>
 
-
-            <%
-            }
-            %>
+                <%
+                    }
+                %>
+                <%
+                    if( ( !memberId.equals(board.getMemberId()) ) && memberId.equals("testman3")){
+                %>
+                    <div class="btns-rm">
+                        <span class="red-btn btn-remove"> 삭제 </span>
+                    </div>
+                <%
+                    }
+                %>
             </div>
 
             <!--리플 목록 출력 영역 -->
@@ -86,6 +95,20 @@
                 <ul>
                     <li></li>
                 </ul>
+                <!-- 리플 시작 -->
+                <c:if test="${loginInfo != null}">
+                    <form name="frmRipple" method="post">
+                        <div class="write-ripple-area">
+                            <input type="hidden" name="boardNum" value="<%=boardNum%>"> <!--게시물의 번호-->
+                            <input name="name" type="text" class="ripple-form-name" value="${loginInfo.userName}" placeholder="name">
+                            <div class="ripple-content-box">
+                                <textarea name="content" class="ripple-form-content" cols="50" rows="3" maxlength="300" minlength="5"></textarea>
+                                <span class="ripple-submit-btn" id="goRippleSubmit">등록</span>
+                            </div>
+                        </div>
+                    </form>
+                </c:if>
+                <!--//리플 끝 -->
             </div>
 
             <!-- 리플 목록 출력 영역 -->
@@ -93,20 +116,20 @@
                 <input type="hidden" name="boardNum" value="<%=board.getBoardNum()%>">
             </form>
 
-            <!-- 리플 시작 -->
-            <c:if test="${loginInfo != null}">
-                <form name="frmRipple" method="post">
-                    <div class="write-ripple-area">
-                        <input type="hidden" name="boardNum" value="<%=boardNum%>"> <!--게시물의 번호-->
-                        <input name="name" type="text" class="ripple-form-name" value="${loginInfo.userName}" placeholder="name">
-                        <div class="ripple-content-box">
-                            <textarea name="content" class="ripple-form-content" cols="50" rows="3" maxlength="300" minlength="5"></textarea>
-                            <span class="ripple-submit-btn" id="goRippleSubmit">등록</span>
-                        </div>
-                    </div>
-                </form>
-            </c:if>
-            <!--//리플 끝 -->
+<%--            <!-- 리플 시작 -->--%>
+<%--            <c:if test="${loginInfo != null}">--%>
+<%--                <form name="frmRipple" method="post">--%>
+<%--                    <div class="write-ripple-area">--%>
+<%--                        <input type="hidden" name="boardNum" value="<%=boardNum%>"> <!--게시물의 번호-->--%>
+<%--                        <input name="name" type="text" class="ripple-form-name" value="${loginInfo.userName}" placeholder="name">--%>
+<%--                        <div class="ripple-content-box">--%>
+<%--                            <textarea name="content" class="ripple-form-content" cols="50" rows="3" maxlength="300" minlength="5"></textarea>--%>
+<%--                            <span class="ripple-submit-btn" id="goRippleSubmit">등록</span>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </form>--%>
+<%--            </c:if>--%>
+<%--            <!--//리플 끝 -->--%>
 
         </div>
     </div>

@@ -1,6 +1,7 @@
 <%@ page import="com.example.fus.dto.UserDTO" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%
     // 페이징 세팅
     int pagePerBlock = 10; // 페이지 출력 시 나올 범위.
@@ -110,8 +111,8 @@
                         <img class="product-img" src="/upload/fus/product/${newProduct.fileName}" style="width: 100px;">
                     </div>
                     <h3>${newProduct.productName}</h3>
-                    <p>${newProduct.description}</p>
-                    <p>${newProduct.price}</p>
+                    <p style="height: 50px">${newProduct.description}</p>
+                    <h6 class="product-price">\<fmt:formatNumber type="number" maxFractionDigits="3" value="${newProduct.price}" /></h6>
                     <p>
                         <a href="/product/modify?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-modify" role="button">수정 >></a>
                         <a href="/product/remove?productId=${newProduct.productId}&pageNum=${pageNum}&category=${category}" class="btn-remove" role="button">삭제 >></a>

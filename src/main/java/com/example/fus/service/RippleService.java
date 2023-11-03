@@ -46,7 +46,7 @@ public class RippleService {
             log.info(request.getSession().getAttribute("loginInfo"));
             UserDTO userDTO = (UserDTO) request.getSession().getAttribute("loginInfo");
 
-            if(rippleDTO.getMemberId().equals(userDTO.getMemberId())){
+            if(userDTO != null && rippleDTO.getMemberId().equals(userDTO.getMemberId())){
                 //댓글 사용자와 로그인한 사용자가 같은 경우
                 rippleDTO.setLogin(true);
             }

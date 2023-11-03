@@ -60,6 +60,7 @@ public class BoardController extends HttpServlet {
                 boardService.boardCountUp(req);
                 BoardDTO boardDTO = boardService.getBoard(req);
                 log.info("확인" + boardDTO.getMemberId());
+                log.info(boardDTO.getFileName().equals(""));
                 req.setAttribute("boardDTO", boardDTO);
                 req.getRequestDispatcher("/WEB-INF/board/boardView.jsp").forward(req, resp);
                 break;

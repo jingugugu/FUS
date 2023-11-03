@@ -32,8 +32,6 @@ public class ReviewController extends HttpServlet {
             case "/remove":
                 int index = Integer.parseInt(req.getParameter("index"));
                 int productId = Integer.parseInt(req.getParameter("productId"));
-
-                //log.info("indexiiiiii" + index); 성공
                 try {
                     reviewService.removeReview(index);
                 } catch (Exception e) {
