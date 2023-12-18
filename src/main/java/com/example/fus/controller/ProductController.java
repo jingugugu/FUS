@@ -19,7 +19,7 @@ import java.util.List;
 
 @Log4j2
 @WebServlet("/product/*")
-@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "c:/upload/fus/product") //파일 용량 5mb, location="사진 저장되는 곳"
+@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "/Users/imjingu/Desktop/dev/upload/fus/product") //파일 용량 5mb, location="사진 저장되는 곳"
 public class ProductController extends HttpServlet {
 
     private String path;

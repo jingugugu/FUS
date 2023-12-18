@@ -16,7 +16,7 @@ public enum ConnectionUtil { // enum은 자동으로 싱글톤 타입으로 만�
         config.setDriverClassName("org.mariadb.jdbc.Driver");
         config.setJdbcUrl("jdbc:mariadb://localhost:3306/fus");
         config.setUsername("root");
-        config.setPassword("2115"); // 이 부분 각자 비밀번호에 맞춰서 변경
+        config.setPassword("6521"); // 이 부분 각자 비밀번호에 맞춰서 변경
         config.addDataSourceProperty("cachePrepStmts", "true");
         config.addDataSourceProperty("prepStmtCacheSize", "250");
         config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");

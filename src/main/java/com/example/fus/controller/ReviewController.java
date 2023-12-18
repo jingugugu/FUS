@@ -14,7 +14,7 @@ import java.io.IOException;
 
 @Log4j2
 @WebServlet("/review/*")
-@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "c:/upload/fus/review")
+@MultipartConfig(maxFileSize = 5 * 1024 * 1024, location = "/Users/imjingu/Desktop/dev/upload/fus/review")
 public class ReviewController extends HttpServlet {
     private String path;
     private ReviewService reviewService = null;
